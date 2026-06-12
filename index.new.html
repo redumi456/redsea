@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RED SEA — Conference Controller</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080C10' rx='20'/><text x='50' y='38' font-size='22' font-weight='bold' fill='%23E63946' text-anchor='middle' font-family='Arial'>RED</text><text x='50' y='64' font-size='22' font-weight='bold' fill='%23E63946' text-anchor='middle' font-family='Arial'>SEA</text></svg>"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080C10' rx='20'/><text x='50' y='38' font-size='22' font-weight='bold' fill='%23E63946' text-anchor='middle' font-family='Arial'>RED</text><text x='50' y='64' font-size='22' font-weight='bold' fill='%23E63946' text-anchor='middle' font-family='Arial'>SEA</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="manifest" href="data:application/json,{%22name%22:%22RED%20SEA%22,%22short_name%22:%22RED%20SEA%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23080c10%22,%22theme_color%22:%22%23e63946%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%253Csvg%2520xmlns%253D'http%253A//www.w3.org/2000/svg'%2520viewBox%253D'0%25200%2520192%2520192'%253E%253Crect%2520width%253D'192'%2520height%253D'192'%2520fill%253D'%2523e63946'%2520rx%253D'32'/%253E%253Ctext%2520x%253D'50%2525'%2520y%253D'58%2525'%2520font-family%253D'Arial'%2520font-weight%253D'bold'%2520font-size%253D'72'%2520fill%253D'white'%2520text-anchor%253D'middle'%2520dominant-baseline%253D'middle'%253ERS%253C/text%253E%253C/svg%253E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22}]}"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="RED SEA"/>
+<meta name="theme-color" content="#e63946"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%23e63946' rx='40'/><text x='50%25' y='55%25' font-family='Arial' font-weight='bold' font-size='68' fill='white' text-anchor='middle' dominant-baseline='middle'>RS</text></svg>"/>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUkVEIFNFQSIsInNob3J0X25hbWUiOiJSRUQgU0VBIiwiZGVzY3JpcHRpb24iOiJSZWQgU2VhIENvbmZlcmVuY2UgQ29udHJvbGxlciIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMDgwQzEwIiwidGhlbWVfY29sb3IiOiIjRTYzOTQ2Iiwib3JpZW50YXRpb24iOiJwb3J0cmFpdCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUJtYVd4c1BTSmxiblFpSUhodGJEcHpkSEpwYm1jOUlqTXdNQ0lnZDJsa2RHZzlJak13TUNJZ1lXeHZibWx1WVhSdmNqMGlkWEpzSUdsMklpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBqeGcgc3R5bGU9J2ZpbGw6IzA4MEMxMCc+PHJlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnLz48L2c+PHRleHQgeD0nNTAnIHk9JzM4JyBmb250LXNpemU9JzIwJyBmb250LXdlaWdodD0nYm9sZCcgZmlsbD0nI0U2Mzk0NicgdGV4dC1hbmNob3I9J21pZGRsZScgZm9udC1mYW1pbHk9J0FyaWFsJz5SRUQ8L3RleHQ+PHRleHQgeD0nNTAnIHk9JzYyJyBmb250LXNpemU9JzIwJyBmb250LXdlaWdodD0nYm9sZCcgZmlsbD0nI0U2Mzk0NicgdGV4dC1hbmNob3I9J21pZGRsZScgZm9udC1mYW1pbHk9J0FyaWFsJz5TRUE8L3RleHQ+PC9zdmc+IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwiLCJzaXplcyI6IjE5MngxOTIifV19"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="RED SEA"/>
+<meta name="theme-color" content="#E63946"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --bg: #080c10;
+  --bg2: #0d1219;
+  --bg3: #111820;
+  --bg4: #1a2333;
+  --accent: #e63946;
+  --accent2: #ff6b6b;
+  --cyan: #00d4e8;
+  --cyan2: #00f5ff;
+  --gold: #ffd166;
+  --green: #06d6a0;
+  --orange: #ff9f1c;
+  --text: #e8f0fe;
+  --text2: #8fa3c0;
+  --text3: #4a6080;
+  --border: rgba(0,212,232,0.15);
+  --border2: rgba(0,212,232,0.08);
+  --card: rgba(13,18,25,0.95);
+  --radius: 12px;
+  --radius2: 8px;
+  --font-main: 'Exo 2', sans-serif;
+  --font-display: 'Rajdhani', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-family:var(--font-main);font-size:14px;overflow:hidden}
+
+/* ─── LAYOUT ─── */
+.app-shell{display:flex;height:100vh;width:100vw;overflow:hidden}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border2);display:flex;flex-direction:column;flex-shrink:0;z-index:10}
+.main-area{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.topbar{height:52px;background:var(--bg2);border-bottom:1px solid var(--border2);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0}
+.content{flex:1;overflow-y:auto;padding:20px}
+
+/* ─── SIDEBAR ─── */
+.brand{padding:20px 16px 16px;border-bottom:1px solid var(--border2)}
+.brand-logo{display:flex;align-items:center;gap:10px}
+.brand-icon{width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-family:var(--font-display);font-weight:700;letter-spacing:-1px}
+.brand-text{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);letter-spacing:2px}
+.brand-sub{font-size:10px;color:var(--text3);letter-spacing:3px;margin-top:1px}
+.nav-section{padding:12px 8px}
+.nav-label{font-size:10px;color:var(--text3);letter-spacing:2px;padding:4px 8px 6px;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--radius2);cursor:pointer;color:var(--text2);font-size:13px;transition:all 0.2s;margin-bottom:2px;position:relative}
+.nav-item:hover{background:var(--bg4);color:var(--cyan)}
+.nav-item.active{background:rgba(230,57,70,0.12);color:var(--accent2);border-left:2px solid var(--accent)}
+.nav-item.active i{color:var(--accent)}
+.nav-item i{width:18px;font-size:15px;color:var(--text3)}
+.nav-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:600}
+.sidebar-footer{margin-top:auto;padding:12px 8px;border-top:1px solid var(--border2)}
+.profile-mini{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--radius2);cursor:pointer;transition:background 0.2s}
+.profile-mini:hover{background:var(--bg4)}
+.avatar-sm{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;font-weight:700;flex-shrink:0}
+.profile-mini-info{flex:1}
+.profile-mini-name{font-size:13px;color:var(--text);font-weight:500}
+.profile-mini-role{font-size:10px;color:var(--text3)}
+.profile-mini-chevron{color:var(--text3);font-size:12px}
+
+/* ─── TOPBAR ─── */
+.topbar-title{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text);letter-spacing:1px}
+.topbar-spacer{flex:1}
+.topbar-btn{background:transparent;border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:var(--radius2);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:var(--font-main)}
+.topbar-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.topbar-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.topbar-btn.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+.status-pill{display:flex;align-items:center;gap:6px;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);padding:4px 12px;border-radius:20px}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.status-text{font-size:11px;color:var(--green);font-weight:500}
+
+/* ─── SCREENS ─── */
+.screen{display:none}
+.screen.active{display:block}
+
+/* ─── CARDS ─── */
+.card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.card:hover{border-color:var(--border)}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card-title{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);letter-spacing:0.5px}
+.card-badge{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:600;letter-spacing:0.5px}
+.badge-red{background:rgba(230,57,70,0.2);color:var(--accent2);border:1px solid rgba(230,57,70,0.3)}
+.badge-cyan{background:rgba(0,212,232,0.15);color:var(--cyan);border:1px solid rgba(0,212,232,0.3)}
+.badge-green{background:rgba(6,214,160,0.15);color:var(--green);border:1px solid rgba(6,214,160,0.3)}
+.badge-orange{background:rgba(255,159,28,0.15);color:var(--orange);border:1px solid rgba(255,159,28,0.3)}
+.badge-gold{background:rgba(255,209,102,0.15);color:var(--gold);border:1px solid rgba(255,209,102,0.3)}
+
+/* ─── CALL CARDS ─── */
+.call-entry{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;cursor:pointer;transition:all 0.2s;position:relative}
+.call-entry:hover{border-color:var(--border);background:var(--bg4)}
+.call-entry-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ce-success{background:rgba(6,214,160,0.1);color:var(--green)}
+.ce-failed{background:rgba(230,57,70,0.1);color:var(--accent2)}
+.ce-pending{background:rgba(255,159,28,0.1);color:var(--orange)}
+.ce-cutoff{background:rgba(255,209,102,0.1);color:var(--gold)}
+.ce-nonet{background:rgba(0,212,232,0.1);color:var(--cyan)}
+.call-entry-body{flex:1;min-width:0}
+.ce-row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.ce-label{color:var(--text3);font-size:11px;width:40px;flex-shrink:0}
+.ce-value{color:var(--text);font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ce-memo{color:var(--cyan);font-size:11px}
+.call-entry-meta{text-align:right;flex-shrink:0}
+.ce-time{color:var(--text3);font-size:11px;white-space:nowrap}
+.ce-actions{display:flex;flex-direction:column;gap:4px;margin-top:4px;align-items:flex-end}
+.ce-btn{background:transparent;border:1px solid var(--border);color:var(--text2);padding:3px 8px;border-radius:6px;cursor:pointer;font-size:11px;transition:all 0.2s;font-family:var(--font-main)}
+.ce-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.ce-btn.danger:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* ─── FORM ─── */
+.form-section{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.form-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);letter-spacing:1px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.form-title i{color:var(--accent);font-size:18px}
+.form-row{display:flex;gap:12px;margin-bottom:14px}
+.form-group{flex:1;display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:11px;color:var(--text2);letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.form-control{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:var(--radius2);font-size:13px;outline:none;transition:border-color 0.2s;font-family:var(--font-main);width:100%}
+.form-control:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,232,0.08)}
+.form-control::placeholder{color:var(--text3)}
+.phone-row{display:flex;gap:8px}
+.country-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:var(--radius2);cursor:pointer;display:flex;align-items:center;gap:5px;font-size:13px;white-space:nowrap;transition:all 0.2s;font-family:var(--font-main);flex-shrink:0}
+.country-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn{padding:10px 20px;border-radius:var(--radius2);cursor:pointer;font-size:13px;font-weight:600;letter-spacing:0.5px;border:none;transition:all 0.2s;font-family:var(--font-display);display:inline-flex;align-items:center;gap:7px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-secondary{background:var(--bg4);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-cyan{background:var(--cyan);color:var(--bg);font-weight:700}
+.btn-cyan:hover{background:var(--cyan2);transform:translateY(-1px)}
+.btn-full{width:100%;justify-content:center}
+
+/* ─── STATS ─── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:16px;text-align:center}
+.stat-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cyan);margin-bottom:2px}
+.stat-unit{font-size:11px;color:var(--text3);margin-left:2px}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.stat-card.red .stat-num{color:var(--accent2)}
+.stat-card.gold .stat-num{color:var(--gold)}
+.stat-card.green .stat-num{color:var(--green)}
+
+/* ─── TABLE ─── */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{background:var(--bg3);color:var(--text2);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border2)}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border2);font-size:13px;color:var(--text)}
+.data-table tr:hover td{background:var(--bg3)}
+.data-table tr:last-child td{border-bottom:none}
+
+/* ─── MODAL ─── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;width:90%;max-width:440px;animation:slideUp 0.25s ease}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.modal-title{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text);letter-spacing:1px}
+.modal-close{background:transparent;border:none;color:var(--text3);font-size:20px;cursor:pointer;padding:2px;transition:color 0.2s}
+.modal-close:hover{color:var(--accent2)}
+.modal-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2)}
+.modal-row:last-of-type{border-bottom:none}
+.modal-key{color:var(--text2);font-size:13px}
+.modal-val{color:var(--text);font-size:13px;font-weight:500}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions .btn{flex:1;justify-content:center;font-size:14px;padding:11px}
+
+/* ─── COUNTRY PICKER ─── */
+.country-modal{max-width:380px;max-height:80vh;display:flex;flex-direction:column}
+.country-search{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:8px 12px;margin-bottom:12px}
+.country-search i{color:var(--text3);font-size:14px}
+.country-search input{background:transparent;border:none;color:var(--text);font-size:13px;flex:1;outline:none;font-family:var(--font-main)}
+.country-list{overflow-y:auto;flex:1;max-height:50vh}
+.country-item{display:flex;align-items:center;gap:12px;padding:9px 4px;cursor:pointer;border-radius:6px;transition:background 0.15s}
+.country-item:hover{background:var(--bg4)}
+.ci-flag{font-size:20px;width:26px;text-align:center}
+.ci-name{flex:1;color:var(--text);font-size:13px}
+.ci-code{color:var(--cyan);font-size:12px;font-weight:500}
+
+/* ─── SEARCH BAR ─── */
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:7px 12px;flex:1}
+.search-bar i{color:var(--text3);font-size:14px}
+.search-bar input{background:transparent;border:none;color:var(--text);font-size:13px;flex:1;outline:none;font-family:var(--font-main)}
+
+/* ─── TABS ─── */
+.tab-bar{display:flex;gap:2px;background:var(--bg3);border-radius:var(--radius2);padding:3px;margin-bottom:16px}
+.tab{padding:7px 16px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text2);letter-spacing:0.5px;transition:all 0.2s;font-family:var(--font-display)}
+.tab.active{background:var(--accent);color:#fff}
+
+/* ─── UAE PANEL ─── */
+.uae-panel{background:var(--bg2);border:1px solid rgba(0,212,232,0.2);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.uae-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.uae-icon{width:36px;height:36px;border-radius:8px;background:rgba(0,212,232,0.1);border:1px solid rgba(0,212,232,0.3);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:16px}
+.uae-title{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--cyan);letter-spacing:1px}
+.uae-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border2)}
+.uae-row:last-child{border-bottom:none}
+.uae-key{color:var(--text2);font-size:12px}
+.uae-val{color:var(--text);font-size:12px;font-weight:500}
+
+/* ─── USER CARD ─── */
+.user-entry{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;transition:border-color 0.2s}
+.user-entry:hover{border-color:var(--border)}
+.user-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:700;font-family:var(--font-display);flex-shrink:0}
+.user-info{flex:1}
+.user-name{color:var(--text);font-size:14px;font-weight:600;font-family:var(--font-display)}
+.user-meta{color:var(--text3);font-size:11px;margin-top:2px}
+.user-stats{display:flex;gap:12px;margin-top:4px}
+.user-stat{color:var(--text2);font-size:11px}
+.user-stat span{color:var(--cyan);font-weight:600}
+.user-actions{display:flex;gap:6px}
+.icon-btn{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all 0.2s}
+.icon-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.icon-btn.danger:hover{border-color:var(--accent);color:var(--accent2);background:rgba(230,57,70,0.1)}
+.icon-btn.success:hover{border-color:var(--green);color:var(--green)}
+
+/* ─── TOGGLE ─── */
+.toggle-wrap{display:flex;align-items:center;gap:10px}
+.toggle{width:44px;height:24px;background:var(--bg4);border-radius:12px;cursor:pointer;position:relative;transition:background 0.2s;border:1px solid var(--border);flex-shrink:0}
+.toggle.on{background:var(--cyan);border-color:var(--cyan)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:left 0.2s}
+.toggle.on .toggle-thumb{left:23px}
+.toggle-label{color:var(--text2);font-size:13px}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text3)}
+
+/* ─── TOAST ─── */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--bg4);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:20px;font-size:13px;z-index:200;display:none;animation:fadeIn 0.3s;white-space:nowrap}
+#toast.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ─── LOGIN ─── */
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:300}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:380px;text-align:center}
+.login-logo{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--accent);letter-spacing:4px;margin-bottom:4px}
+.login-sub{color:var(--text3);font-size:12px;letter-spacing:4px;margin-bottom:32px}
+.login-tabs{display:flex;gap:4px;background:var(--bg3);border-radius:10px;padding:3px;margin-bottom:20px}
+.login-tab{flex:1;padding:8px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:all 0.2s;font-family:var(--font-display)}
+.login-tab.active{background:var(--accent);color:#fff}
+.login-wave{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--cyan));border-radius:2px;margin-bottom:24px}
+
+/* ─── PROFILE PAGE ─── */
+.profile-header{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:24px;margin-bottom:16px;text-align:center}
+.profile-avatar-lg{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;font-weight:700;margin:0 auto 12px;font-family:var(--font-display);position:relative}
+.profile-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;background:var(--green);border:2px solid var(--bg2)}
+.profile-name-lg{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);letter-spacing:1px}
+.profile-role{font-size:12px;color:var(--text3);letter-spacing:2px;margin-top:3px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .sidebar{width:60px;overflow:hidden}
+  .brand-text,.brand-sub,.nav-item span,.nav-badge,.profile-mini-info,.profile-mini-chevron{display:none}
+  .nav-item{justify-content:center;padding:10px}
+  .nav-item i{width:auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ─── PHONE / MOBILE ─── */
+@media(max-width:600px){
+  /* Hide desktop sidebar completely */
+  .sidebar{ display:none !important }
+  .topbar{ display:none !important }
+
+  /* Full screen app */
+  .app-shell{ flex-direction:column }
+  .main-area{ width:100vw; height:100vh }
+  .content{ padding:8px 10px 80px 10px; height:calc(100vh - 110px); overflow-y:auto }
+
+  /* Mobile topbar replacement */
+  #mobile-topbar{ display:flex !important }
+
+  /* Drawer sidebar */
+  #mobile-drawer{
+    display:none;
+    position:fixed;top:0;left:0;
+    width:78vw;max-width:260px;height:100vh;
+    background:var(--bg2);border-right:1px solid var(--border);
+    z-index:200;overflow-y:auto;flex-direction:column;
+    padding-bottom:20px;
+  }
+  #mobile-drawer.open{ display:flex !important }
+  #drawer-overlay{
+    display:none;position:fixed;inset:0;
+    background:rgba(0,0,0,0.65);z-index:199;
+  }
+  #drawer-overlay.open{ display:block }
+
+  .stats-grid{ grid-template-columns:1fr 1fr }
+  .grid-2{ grid-template-columns:1fr }
+  .grid-3{ grid-template-columns:1fr 1fr }
+  .call-entry{ flex-wrap:wrap }
+  .uae-panel{ margin-bottom:12px }
+}
+
+/* Desktop only elements hidden on mobile */
+.menu-btn{
+  display:none;background:transparent;border:none;
+  color:var(--text);font-size:22px;cursor:pointer;
+  padding:4px 8px;
+}
+
+/* ─── LIVE INDICATOR ─── */
+.live-badge{background:rgba(6,214,160,0.15);color:var(--green);border:1px solid rgba(6,214,160,0.3);font-size:10px;padding:2px 7px;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
+
+/* ─── GRID HELPERS ─── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.flex-row{display:flex;align-items:center;gap:8px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
+.mt8{margin-top:8px}
+.mt12{margin-top:12px}
+.mb12{margin-bottom:12px}
+.text-cyan{color:var(--cyan)}
+.text-red{color:var(--accent2)}
+.text-green{color:var(--green)}
+.text-gold{color:var(--gold)}
+.text-muted{color:var(--text3)}
+.text-sm{font-size:12px}
+.text-xs{font-size:11px}
+.fw6{font-weight:600}
+.font-display{font-family:var(--font-display)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ APP LOCK ═══════════════ -->
+<div id="applock-screen" style="position:fixed;inset:0;background:#080c10;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:500;padding:32px">
+  <div style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--accent);letter-spacing:4px;margin-bottom:4px">RED SEA</div>
+  <div style="font-size:11px;color:var(--text3);letter-spacing:4px;margin-bottom:32px">CONFERENCE CONTROLLER</div>
+  <div style="width:100%;max-width:340px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px">
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="width:56px;height:56px;border-radius:50%;background:rgba(230,57,70,0.15);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px">🔐</div>
+      <div style="font-size:14px;color:var(--text2)">Enter App Access Code</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:4px">Contact master for access code</div>
+    </div>
+    <input id="applock-input" type="password" class="form-control" placeholder="Enter access code" style="text-align:center;font-size:18px;letter-spacing:4px;margin-bottom:12px"/>
+    <div id="applock-error" style="color:var(--accent2);font-size:12px;text-align:center;margin-bottom:10px;min-height:18px"></div>
+    <button onclick="checkAppLock()" style="width:100%;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-display);letter-spacing:2px">ENTER →</button>
+  </div>
+  <div style="margin-top:16px;font-size:11px;color:var(--text3)">RED SEA v2.0 · Authorized Access Only</div>
+</div>
+
+<!-- ═══════════════ LOGIN ═══════════════ -->
+<div id="login-screen" style="display:none">
+  <div class="login-box">
+    <div class="login-logo">RED SEA</div>
+    <div class="login-sub">CONFERENCE CONTROLLER</div>
+    <div class="login-wave"></div>
+    <div style="display:flex;background:var(--bg3);border-radius:10px;padding:3px;margin-bottom:16px;gap:3px">
+      <div id="lt-credentials" onclick="switchLoginTab('credentials')" style="flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;background:var(--accent);color:#fff;transition:all 0.2s;font-family:var(--font-display)">Username</div>
+      <div id="lt-key" onclick="switchLoginTab('key')" style="flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text2);transition:all 0.2s;font-family:var(--font-display)">Enter Key</div>
+    </div>
+    <div class="form-group mb12">
+      <div class="form-label">Username</div>
+      <input class="form-control" id="l-user" placeholder="Enter username" autocomplete="off"/>
+    </div>
+    <div class="form-group mb12">
+      <div class="form-label">Password</div>
+      <input class="form-control" type="password" id="l-pass" placeholder="••••••••" autocomplete="off"/>
+    </div>
+    <!-- Key login section -->
+    <div id="key-login-section" style="display:none;margin-bottom:14px">
+      <div style="font-size:11px;color:var(--text2);letter-spacing:1px;margin-bottom:6px">PASTE LOGIN KEY</div>
+      <textarea id="inp-login-key" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px;border-radius:8px;font-size:11px;font-family:monospace;height:80px;resize:none;outline:none" placeholder="Paste your login key here..."></textarea>
+      <button onclick="loginWithKey()" style="width:100%;background:var(--cyan);color:#000;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font-display);letter-spacing:1px;margin-top:8px">ENTER WITH KEY →</button>
+    </div>
+    <!-- Remember Me -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div style="display:flex;align-items:center;gap:8px;cursor:pointer" onclick="toggleRemember()">
+        <div id="remember-box" style="width:20px;height:20px;border-radius:4px;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;transition:all 0.2s">
+          <i class="fa fa-check" id="remember-check" style="font-size:11px;color:#fff;display:none"></i>
+        </div>
+        <span style="font-size:13px;color:var(--text2)">Remember me</span>
+      </div>
+      <span style="font-size:11px;color:var(--text3)">Stay logged in</span>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="doLogin()" style="font-size:15px;padding:13px;letter-spacing:2px">ENTER <i class="fa fa-arrow-right"></i></button>
+    <div style="margin-top:16px;color:var(--text3);font-size:11px">RED SEA v2.0 · Conference Controller</div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN APP ═══════════════ -->
+<div class="app-shell" id="main-app" style="display:none">
+
+  <!-- ═══ MOBILE TOPBAR ═══ -->
+  <div id="mobile-topbar" style="display:none;position:fixed;top:0;left:0;right:0;height:52px;background:var(--bg2);border-bottom:1px solid var(--border2);z-index:100;align-items:center;padding:0 12px;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,0.4)">
+    <button onclick="openDrawer()" style="background:transparent;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px"><i class="fa fa-bars"></i></button>
+    <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--accent);letter-spacing:2px">RED SEA</div>
+    <div style="flex:1"></div>
+    <div id="mt-uae" style="display:flex;align-items:center;gap:5px;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);padding:3px 10px;border-radius:20px">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite"></div>
+      <span style="font-size:10px;color:var(--green);font-weight:500">UAE</span>
+    </div>
+    <button onclick="goScreen('submit')" style="background:var(--accent);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-display)">+ CALL</button>
+  </div>
+
+  <!-- ═══ MOBILE BOTTOM NAV ═══ -->
+  <div id="mobile-bottom" style="display:none;position:fixed;bottom:0;left:0;right:0;height:62px;background:var(--bg2);border-top:1px solid var(--border2);z-index:100;align-items:center;justify-content:space-around;box-shadow:0 -2px 8px rgba(0,0,0,0.4)">
+    <div onclick="mobileTo('feed')" id="mb-feed" style="display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;color:var(--accent)">
+      <i class="fa fa-history" style="font-size:19px"></i>
+      <span style="font-size:9px;font-weight:600">FEED</span>
+    </div>
+    <div onclick="mobileTo('waiting')" id="mb-waiting" style="display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;color:var(--text3)">
+      <i class="fa fa-clock" style="font-size:19px"></i>
+      <span style="font-size:9px">WAITING</span>
+    </div>
+    <div onclick="mobileTo('submit')" style="display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;margin-top:-20px">
+      <div style="width:52px;height:52px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(230,57,70,0.5);border:3px solid var(--bg)">
+        <i class="fa fa-plus" style="font-size:22px;color:#fff"></i>
+      </div>
+    </div>
+    <div onclick="mobileTo('profile')" id="mb-profile" style="display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;color:var(--text3)">
+      <i class="fa fa-user" style="font-size:19px"></i>
+      <span style="font-size:9px">PROFILE</span>
+    </div>
+    <div onclick="openDrawer()" style="display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;color:var(--text3)">
+      <i class="fa fa-th-large" style="font-size:19px"></i>
+      <span style="font-size:9px">MENU</span>
+    </div>
+  </div>
+
+  <!-- ═══ MOBILE DRAWER ═══ -->
+  <div id="drawer-overlay" onclick="closeDrawer()"></div>
+  <div id="mobile-drawer">
+    <div style="padding:16px;background:var(--bg3);border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:#fff;font-size:14px">RS</div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);letter-spacing:2px">RED SEA</div>
+        <div style="font-size:10px;color:var(--text3);letter-spacing:2px">CONTROLLER</div>
+      </div>
+      <button onclick="closeDrawer()" style="margin-left:auto;background:transparent;border:none;color:var(--text3);font-size:18px;cursor:pointer"><i class="fa fa-times"></i></button>
+    </div>
+    <!-- User info -->
+    <div style="padding:12px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:700;font-family:var(--font-display)" id="drawer-avatar">R</div>
+      <div>
+        <div style="font-size:13px;color:var(--text);font-weight:600" id="drawer-name">User</div>
+        <div style="font-size:10px;color:var(--text3)" id="drawer-role">USER</div>
+      </div>
+    </div>
+    <!-- Nav items -->
+    <div style="padding:8px">
+      <div style="font-size:10px;color:var(--text3);letter-spacing:2px;padding:6px 8px">MAIN</div>
+      <div onclick="drawerGo('feed')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+        <i class="fa fa-history" style="width:18px;color:var(--text3)"></i>Call Feed
+      </div>
+      <div onclick="drawerGo('submit')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+        <i class="fa fa-phone-alt" style="width:18px;color:var(--text3)"></i>New Call
+      </div>
+      <div onclick="drawerGo('waiting')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+        <i class="fa fa-clock" style="width:18px;color:var(--text3)"></i>Waiting
+        <span id="drawer-wait-badge" style="margin-left:auto;background:var(--accent);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600">0</span>
+      </div>
+      <div onclick="drawerGo('profile')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+        <i class="fa fa-user" style="width:18px;color:var(--text3)"></i>My Profile
+      </div>
+      <!-- Admin section - hidden for users -->
+      <div id="drawer-admin-section" style="display:none">
+        <div style="font-size:10px;color:var(--text3);letter-spacing:2px;padding:10px 8px 6px">ADMIN</div>
+        <div onclick="drawerGo('dashboard')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+          <i class="fa fa-tachometer-alt" style="width:18px;color:var(--text3)"></i>Dashboard
+        </div>
+        <div onclick="drawerGo('users')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+          <i class="fa fa-users" style="width:18px;color:var(--text3)"></i>Users
+        </div>
+        <div onclick="drawerGo('livecalls')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+          <i class="fa fa-broadcast-tower" style="width:18px;color:var(--text3)"></i>Live Calls
+        </div>
+        <div onclick="drawerGo('uae')" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;margin-bottom:2px" class="drawer-item">
+          <i class="fa fa-sim-card" style="width:18px;color:var(--text3)"></i>UAE Phone
+        </div>
+      </div>
+      <!-- Logout -->
+      <div style="margin-top:16px;border-top:1px solid var(--border2);padding-top:12px">
+        <div onclick="doLogout()" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;cursor:pointer;color:var(--accent2);font-size:13px" class="drawer-item">
+          <i class="fa fa-sign-out-alt" style="width:18px"></i>Logout
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR (desktop only) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <div class="brand-icon">RS</div>
+        <div>
+          <div class="brand-text">RED SEA</div>
+          <div class="brand-sub">CONTROLLER</div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item active" id="nav-feed" onclick="goScreen('feed')"><i class="fa fa-history"></i><span>Call Feed</span><span class="nav-badge" id="nb-waiting" style="display:none">3</span></div>
+      <div class="nav-item" id="nav-submit" onclick="goScreen('submit')"><i class="fa fa-phone-alt"></i><span>New Call</span></div>
+      <div class="nav-item" id="nav-waiting" onclick="goScreen('waiting')"><i class="fa fa-clock"></i><span>Waiting</span><span class="nav-badge">3</span></div>
+      <div class="nav-item" id="nav-download" onclick="goScreen('download')" style="display:none"><i class="fa fa-mobile-alt"></i><span>Download App</span></div>
+    </nav>
+    <nav class="nav-section" id="nav-admin-section" style="display:none">
+      <div class="nav-label">Admin</div>
+      <div class="nav-item" id="nav-dashboard" onclick="goScreen('dashboard')"><i class="fa fa-tachometer-alt"></i><span>Dashboard</span></div>
+      <div class="nav-item" id="nav-users" onclick="goScreen('users')"><i class="fa fa-users"></i><span>Users</span></div>
+      <div class="nav-item" id="nav-livecalls" onclick="goScreen('livecalls')"><i class="fa fa-broadcast-tower"></i><span>Live Calls</span></div>
+      <div class="nav-item" id="nav-uae" onclick="goScreen('uae')"><i class="fa fa-sim-card"></i><span>UAE Phone</span></div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile-mini" onclick="goScreen('profile')">
+        <div class="avatar-sm" id="sidebar-avatar">R</div>
+        <div class="profile-mini-info">
+          <div class="profile-mini-name" id="sidebar-name">ridwan</div>
+          <div class="profile-mini-role" id="sidebar-role">User</div>
+        </div>
+        <i class="fa fa-ellipsis-v profile-mini-chevron"></i>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <div class="topbar">
+      <button class="menu-btn" id="menu-btn" onclick="toggleSidebar()"><i class="fa fa-bars"></i></button>
+      <div class="topbar-title" id="topbar-title">Call Feed</div>
+      <div class="topbar-spacer"></div>
+      <div class="status-pill"><div class="status-dot"></div><div class="status-text">UAE Online</div></div>
+      <div class="search-bar" style="flex:0 0 220px">
+        <i class="fa fa-search"></i>
+        <input placeholder="Search calls..." id="global-search" oninput="globalSearch()"/>
+      </div>
+      <button class="topbar-btn primary" onclick="goScreen('submit')"><i class="fa fa-plus"></i>New Call</button>
+    </div>
+
+    <div class="content" id="main-content" style="margin-top:0">
+
+      <!-- ══ FEED SCREEN ══ -->
+      <div class="screen active" id="screen-feed">
+        <div class="tab-bar">
+          <div class="tab active" id="tab-history" onclick="feedTab('history',this)">History</div>
+          <div class="tab" id="tab-waiting-tab" onclick="feedTab('waiting',this)">Waiting <span style="background:var(--accent);color:#fff;font-size:10px;padding:1px 5px;border-radius:8px;margin-left:4px">3</span></div>
+        </div>
+        <div id="feed-history">
+          <div id="history-cards"></div>
+        </div>
+        <div id="feed-waiting" style="display:none">
+          <div id="waiting-cards"></div>
+        </div>
+      </div>
+
+      <!-- ══ SUBMIT SCREEN ══ -->
+      <div class="screen" id="screen-submit">
+        <!-- Phone icon centered at top -->
+        <div style="text-align:center;padding:24px 0 16px">
+          <div style="width:90px;height:90px;background:rgba(0,212,232,0.1);border:2px solid rgba(0,212,232,0.3);border-radius:50%;display:inline-flex;align-items:center;justify-content:center">
+            <i class="fa fa-phone-alt" style="font-size:36px;color:var(--cyan)"></i>
+          </div>
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text);letter-spacing:2px;margin-top:10px">NEW CALL</div>
+        </div>
+        <div class="form-section" style="margin:0 0 12px">
+          <!-- From field -->
+          <div class="form-group" style="margin-bottom:14px">
+            <div class="form-label">From Number</div>
+            <div class="phone-row">
+              <button class="country-btn" onclick="openCountry('from')" id="from-flag-btn">🇪🇬 +20 <i class="fa fa-chevron-down" style="font-size:10px"></i></button>
+              <input class="form-control" id="inp-from" placeholder=""/>
+            </div>
+          </div>
+          <!-- To field -->
+          <div class="form-group" style="margin-bottom:14px">
+            <div class="form-label">To Number</div>
+            <div class="phone-row">
+              <button class="country-btn" onclick="openCountry('to')" id="to-flag-btn">🇪🇷 +291 <i class="fa fa-chevron-down" style="font-size:10px"></i></button>
+              <input class="form-control" id="inp-to" placeholder=""/>
+            </div>
+          </div>
+          <!-- Memo -->
+          <div class="form-group" style="margin-bottom:14px">
+            <div class="form-label">Memo (Optional)</div>
+            <input class="form-control" id="inp-memo" placeholder=""/>
+          </div>
+          <!-- Limit -->
+          <div class="form-group" style="margin-bottom:16px">
+            <div class="form-label">Call Limit (minutes)</div>
+            <input class="form-control" type="number" id="inp-limit" placeholder="" min="1" max="600"/>
+          </div>
+          <button class="btn btn-cyan btn-full" onclick="submitCall()" style="font-size:16px;padding:14px;letter-spacing:2px;border-radius:10px"><i class="fa fa-paper-plane"></i>SUBMIT CALL</button>
+        </div>
+
+      </div>
+
+      <!-- ══ WAITING SCREEN ══ -->
+      <div class="screen" id="screen-waiting">
+        <div id="waiting-cards-screen"></div>
+      </div>
+
+      <!-- ══ DASHBOARD ══ -->
+      <div class="screen" id="screen-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-num" id="ds-today">232</div><div class="stat-label">Today (min)</div></div>
+          <div class="stat-card red"><div class="stat-num" id="ds-users">7</div><div class="stat-label">Active Users</div></div>
+          <div class="stat-card gold"><div class="stat-num" id="ds-waiting">3</div><div class="stat-label">Waiting</div></div>
+          <div class="stat-card green"><div class="stat-num" id="ds-month">14820</div><div class="stat-label">This Month</div></div>
+        </div>
+        <div class="grid-2" style="margin-bottom:16px">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Top Users</div><span class="card-badge badge-cyan">This Month</span></div>
+            <div id="top-users-list"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Recent Activity</div><span class="card-badge badge-red">Live</span></div>
+            <div id="recent-activity-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ USERS ══ -->
+      <div class="screen" id="screen-users">
+        <div class="flex-between mb12">
+          <div style="font-family:var(--font-display);font-size:16px;font-weight:600">User Management</div>
+          <button class="btn btn-primary" id="btn-create-user" onclick="openCreateUser()"><i class="fa fa-plus"></i>Create User</button>
+        </div>
+        <div id="users-list"></div>
+      </div>
+
+      <!-- ══ LIVE CALLS ══ -->
+      <div class="screen" id="screen-livecalls">
+        <div class="flex-between mb12">
+          <div style="font-family:var(--font-display);font-size:16px;font-weight:600">Live &amp; Recent Calls</div>
+          <div class="live-badge"><div class="live-dot"></div>Live</div>
+        </div>
+        <div id="live-calls-list"></div>
+      </div>
+
+      <!-- ══ UAE PHONE ══ -->
+      <div class="screen" id="screen-uae">
+        <div class="grid-2">
+          <div>
+            <div class="uae-panel">
+              <div class="uae-header">
+                <div class="uae-icon"><i class="fa fa-sim-card"></i></div>
+                <div><div class="uae-title">UAE Controller Phone</div><div style="font-size:11px;color:var(--text3)">du SIM — Auto Dialer</div></div>
+              </div>
+              <div class="uae-row"><span class="uae-key">Status</span><span class="uae-val" style="color:var(--green)">● Online</span></div>
+              <div class="uae-row"><span class="uae-key">SIM 1 (du)</span><span class="uae-val" id="uae-sim1">+97150xxxxxxx</span></div>
+              <div class="uae-row"><span class="uae-key">Last Ping</span><span class="uae-val">2s ago</span></div>
+              <div class="uae-row"><span class="uae-key">Queue</span><span class="uae-val" style="color:var(--orange)">3 waiting</span></div>
+              <div class="uae-row"><span class="uae-key">Calls Today</span><span class="uae-val">47</span></div>
+              <div class="uae-row"><span class="uae-key">Network</span><span class="uae-val" style="color:var(--cyan)">4G LTE ▐▐▐▐</span></div>
+              <div class="uae-row"><span class="uae-key">Mic / Mute</span><span class="uae-val" id="uae-mute-status" style="color:var(--gold)">🔇 Auto-muted on merge</span></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Call Workflow</div></div>
+              <div style="font-size:12px;color:var(--text2);line-height:1.8">
+                <div>1. Request received from Firebase</div>
+                <div>2. UAE phone dials <span class="text-cyan">Egypt number</span> first</div>
+                <div>3. Waits for Egypt to answer</div>
+                <div>4. UAE phone dials <span class="text-green">Eritrea number</span> second</div>
+                <div>5. Both calls merged (conference)</div>
+                <div>6. <span class="text-gold">UAE phone mic auto-muted</span> 🔇</div>
+                <div>7. Timer monitors limit</div>
+                <div>8. Auto-ends at time limit</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Add UAE Number</div><span class="card-badge badge-cyan">SIM Config</span></div>
+              <div class="form-group mb12">
+                <div class="form-label">UAE Phone Number</div>
+                <div class="phone-row">
+                  <span style="background:var(--bg3);border:1px solid var(--border);padding:9px 10px;border-radius:var(--radius2);color:var(--text);font-size:13px">🇦🇪 +971</span>
+                  <input class="form-control" id="uae-num-inp" placeholder="501234567"/>
+                </div>
+              </div>
+              <div class="form-group mb12">
+                <div class="form-label">SIM Slot</div>
+                <select class="form-control" id="uae-sim-slot">
+                  <option value="1">SIM 1 (Primary)</option>
+                  <option value="2">SIM 2 (Secondary)</option>
+                </select>
+              </div>
+              <div class="form-group mb12">
+                <div class="form-label">Device Name</div>
+                <input class="form-control" id="uae-device" placeholder="e.g. Samsung S21 UAE"/>
+              </div>
+              <button class="btn btn-cyan btn-full" onclick="saveUAE()"><i class="fa fa-save"></i>Save UAE Configuration</button>
+            </div>
+            <div class="card mt8">
+              <div class="card-header"><div class="card-title">SIM Slots</div></div>
+              <div class="uae-row"><span class="uae-key">SIM 1</span><span style="color:var(--green);font-size:12px">● Active — du UAE</span></div>
+              <div class="uae-row"><span class="uae-key">SIM 2</span><span style="color:var(--text3);font-size:12px">○ Empty</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PROFILE ══ -->
+      <div class="screen" id="screen-profile">
+        <div class="profile-header">
+          <div class="profile-avatar-lg" id="profile-avatar-lg">R<div class="profile-online"></div></div>
+          <div class="profile-name-lg" id="profile-name-lg">Ridwan</div>
+          <div class="profile-role" id="profile-role-lg">USER ACCOUNT</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-num" id="p-today">68</div><div class="stat-unit">min</div><div class="stat-label">Today</div></div>
+          <div class="stat-card red"><div class="stat-num" id="p-yesterday">46</div><div class="stat-unit">min</div><div class="stat-label">Yesterday</div></div>
+          <div class="stat-card gold"><div class="stat-num" id="p-month">14820</div><div class="stat-unit">min</div><div class="stat-label">This Month</div></div>
+          <div class="stat-card green"><div class="stat-num" id="p-last">910</div><div class="stat-unit">min</div><div class="stat-label">Last Month</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">My Recent Calls</div></div>
+          <div id="my-calls-list"></div>
+        </div>
+        <div id="master-code-section" style="display:none;margin-top:12px">
+
+          <!-- Change Master Password -->
+          <div class="card" style="margin-bottom:12px;border-color:rgba(230,57,70,0.3)">
+            <div class="card-header">
+              <div class="card-title">🔑 Change My Password</div>
+              <span class="card-badge badge-red">Master Only</span>
+            </div>
+            <div style="font-size:12px;color:var(--text2);margin-bottom:12px">Only you can change your own password</div>
+            <div class="form-group mb12">
+              <div class="form-label">Current Password</div>
+              <input class="form-control" type="password" id="cp-current" placeholder="Enter current password"/>
+            </div>
+            <div class="form-group mb12">
+              <div class="form-label">New Password</div>
+              <input class="form-control" type="password" id="cp-new" placeholder="Min 6 characters"/>
+            </div>
+            <div class="form-group mb12">
+              <div class="form-label">Confirm New Password</div>
+              <input class="form-control" type="password" id="cp-confirm" placeholder="Repeat new password"/>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="changeMasterPassword()">
+              <i class="fa fa-key"></i> Update Password
+            </button>
+          </div>
+
+          <!-- App Access Code -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🔐 App Access Code</div>
+              <span class="card-badge badge-cyan">Entry Gate</span>
+            </div>
+            <div style="font-size:12px;color:var(--text2);margin-bottom:12px">
+              Everyone needs this code to open the app. Share only with your team.
+            </div>
+            <div style="background:var(--bg3);border-radius:8px;padding:12px;margin-bottom:12px;text-align:center">
+              <div style="font-size:11px;color:var(--text3);margin-bottom:4px">CURRENT CODE</div>
+              <div style="font-size:22px;font-weight:700;color:var(--cyan);letter-spacing:6px" id="current-code-display">••••</div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <input class="form-control" id="new-app-code" placeholder="New code (min 4 chars)" style="flex:1"/>
+              <button class="btn btn-primary" onclick="setAppCode(document.getElementById('new-app-code').value)">
+                <i class="fa fa-save"></i>
+              </button>
+            </div>
+            <div style="font-size:11px;color:var(--text3);margin-top:8px">Default code: 1234</div>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-full mt12" onclick="doLogout()"><i class="fa fa-sign-out-alt"></i>Logout</button>
+      </div>
+
+      <!-- ══ DOWNLOAD SCREEN ══ -->
+      <div class="screen" id="screen-download">
+        <!-- Hero -->
+        <div style="background:linear-gradient(135deg,#0d1219 0%,#1a0a0a 50%,#0d1219 100%);border:1px solid rgba(230,57,70,0.2);border-radius:16px;padding:36px 24px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(230,57,70,0.12),transparent 70%);pointer-events:none"></div>
+          <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,232,0.08),transparent 70%);pointer-events:none"></div>
+          <!-- Phone mockup -->
+          <div style="display:inline-block;position:relative;margin-bottom:24px">
+            <div style="width:140px;height:260px;background:#0a0a0a;border-radius:28px;border:2px solid #333;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6)">
+              <!-- notch -->
+              <div style="height:22px;background:#111;display:flex;align-items:center;justify-content:center"><div style="width:40px;height:5px;background:#222;border-radius:3px"></div></div>
+              <!-- screen content -->
+              <div style="flex:1;background:#080c10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:8px">
+                <div style="width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:#fff;font-size:14px">RS</div>
+                <div style="font-family:var(--font-display);font-size:13px;color:var(--text);font-weight:700;letter-spacing:1px">RED SEA</div>
+                <div style="width:80%;height:1px;background:#222"></div>
+                <div style="width:70%;height:6px;background:#1a2333;border-radius:3px"></div>
+                <div style="width:55%;height:6px;background:#1a2333;border-radius:3px"></div>
+                <div style="width:80%;height:28px;background:rgba(230,57,70,0.2);border:1px solid rgba(230,57,70,0.4);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-top:6px">
+                  <div style="font-size:9px;color:var(--accent2);font-weight:600;letter-spacing:1px">SUBMIT CALL</div>
+                </div>
+                <div style="display:flex;gap:4px;margin-top:4px">
+                  <div style="width:18px;height:18px;background:#1a2333;border-radius:4px"></div>
+                  <div style="width:18px;height:18px;background:rgba(230,57,70,0.2);border-radius:4px"></div>
+                  <div style="width:18px;height:18px;background:#1a2333;border-radius:4px"></div>
+                </div>
+              </div>
+              <!-- home bar -->
+              <div style="height:18px;background:#111;display:flex;align-items:center;justify-content:center"><div style="width:30px;height:3px;background:#333;border-radius:2px"></div></div>
+            </div>
+            <!-- glow ring -->
+            <div style="position:absolute;inset:-8px;border-radius:36px;border:1px solid rgba(230,57,70,0.2);pointer-events:none"></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--text);letter-spacing:3px;margin-bottom:4px">RED SEA</div>
+          <div style="font-size:12px;color:var(--text3);letter-spacing:4px;margin-bottom:8px">CONFERENCE CONTROLLER</div>
+          <div style="display:inline-block;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--green);font-size:11px;padding:3px 12px;border-radius:10px;font-weight:600;letter-spacing:1px">v2.0 — STABLE</div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="grid-2" style="margin-bottom:20px">
+          <!-- Android -->
+          <div style="background:var(--bg2);border:1px solid rgba(6,214,160,0.2);border-radius:var(--radius);padding:20px;text-align:center;cursor:pointer;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(6,214,160,0.5)'" onmouseleave="this.style.borderColor='rgba(6,214,160,0.2)'" onclick="downloadAPK()">
+            <div style="width:56px;height:56px;background:rgba(6,214,160,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:1px solid rgba(6,214,160,0.3)">
+              <i class="fa fa-android" style="font-size:28px;color:var(--green)"></i>
+            </div>
+            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:4px">Android APK</div>
+            <div style="font-size:11px;color:var(--text3);margin-bottom:14px">Direct install · v2.0</div>
+            <div style="background:var(--green);color:#000;border-radius:8px;padding:9px;font-size:13px;font-weight:700;font-family:var(--font-display);letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:6px">
+              <i class="fa fa-download"></i> Download APK
+            </div>
+            <div style="font-size:10px;color:var(--text3);margin-top:8px">RedSea_v2.0.apk · 18.4 MB</div>
+          </div>
+          <!-- Google Play -->
+          <div style="background:var(--bg2);border:1px solid rgba(0,212,232,0.2);border-radius:var(--radius);padding:20px;text-align:center;cursor:pointer;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(0,212,232,0.5)'" onmouseleave="this.style.borderColor='rgba(0,212,232,0.2)'" onclick="showToast('Google Play listing coming soon!','cyan')">
+            <div style="width:56px;height:56px;background:rgba(0,212,232,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:1px solid rgba(0,212,232,0.3)">
+              <i class="fa fa-google-play" style="font-size:26px;color:var(--cyan)"></i>
+            </div>
+            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:4px">Google Play</div>
+            <div style="font-size:11px;color:var(--text3);margin-bottom:14px">Coming soon</div>
+            <div style="background:var(--bg4);color:var(--text2);border:1px solid var(--border);border-radius:8px;padding:9px;font-size:13px;font-weight:700;font-family:var(--font-display);letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:6px">
+              <i class="fa fa-clock"></i> Coming Soon
+            </div>
+            <div style="font-size:10px;color:var(--text3);margin-top:8px">Pending review</div>
+          </div>
+        </div>
+
+        <!-- App Info -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">App Requirements</div><span class="card-badge badge-green">Android Only</span></div>
+          <div class="grid-2">
+            <div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-android" style="margin-right:4px"></i>Android</span><span class="uae-val">8.0+ (Oreo)</span></div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-hdd" style="margin-right:4px"></i>Storage</span><span class="uae-val">50 MB free</span></div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-wifi" style="margin-right:4px"></i>Internet</span><span class="uae-val">Required</span></div>
+            </div>
+            <div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-phone" style="margin-right:4px"></i>Phone</span><span class="uae-val">Permission needed</span></div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-bell" style="margin-right:4px"></i>Notifications</span><span class="uae-val">Required</span></div>
+              <div class="uae-row"><span class="uae-key"><i class="fa fa-sim-card" style="margin-right:4px"></i>SIM</span><span class="uae-val">UAE phone only</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Install Instructions -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">How to Install APK</div><span class="card-badge badge-orange">3 Steps</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-start;gap:12px">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent2);font-size:12px;font-weight:700;flex-shrink:0">1</div>
+              <div><div style="font-size:13px;color:var(--text);font-weight:500">Enable Unknown Sources</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Settings → Security → Install unknown apps → Allow</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,212,232,0.1);border:1px solid rgba(0,212,232,0.3);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:12px;font-weight:700;flex-shrink:0">2</div>
+              <div><div style="font-size:13px;color:var(--text);font-weight:500">Download the APK</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Tap Download APK above — save to Downloads folder</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:12px;font-weight:700;flex-shrink:0">3</div>
+              <div><div style="font-size:13px;color:var(--text);font-weight:500">Open &amp; Install</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Tap the APK file in your Downloads — follow prompts</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Version History -->
+        <div class="card">
+          <div class="card-header"><div class="card-title">Version History</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--border2)">
+              <span style="background:rgba(6,214,160,0.15);color:var(--green);font-size:10px;padding:2px 8px;border-radius:6px;font-weight:700;height:fit-content;white-space:nowrap">v2.0 LATEST</span>
+              <div><div style="font-size:13px;color:var(--text);font-weight:500">Egypt called first, Eritrea second</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Fixed call order · All countries · Admin dashboard · Profile stats</div></div>
+            </div>
+            <div style="display:flex;gap:12px">
+              <span style="background:var(--bg4);color:var(--text3);font-size:10px;padding:2px 8px;border-radius:6px;font-weight:700;height:fit-content;white-space:nowrap">v1.0</span>
+              <div><div style="font-size:13px;color:var(--text2)">Initial release</div><div style="font-size:11px;color:var(--text3);margin-top:2px">Basic call submission · History · Waiting queue</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main-area -->
+</div><!-- /app-shell -->
+
+<!-- ═══ RECALL MODAL ═══ -->
+<div class="modal-overlay" id="modal-recall">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fa fa-phone-alt" style="color:var(--cyan);margin-right:8px"></i>Recall / Repeat</div>
+      <button class="modal-close" onclick="closeModal('modal-recall')"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="modal-row"><span class="modal-key">From</span><span class="modal-val" id="mr-from"></span></div>
+    <div class="modal-row"><span class="modal-key">To</span><span class="modal-val" id="mr-to"></span></div>
+    <div class="modal-row"><span class="modal-key">Memo</span><span class="modal-val" id="mr-memo"></span></div>
+    <div class="form-group mt12">
+      <div class="form-label">New Limit (minutes)</div>
+      <input class="form-control" type="number" id="mr-limit" value="100"/>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-recall')"><i class="fa fa-times"></i>Cancel</button>
+      <button class="btn btn-cyan" onclick="doRecall()"><i class="fa fa-redo"></i>Recall</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CANCEL CONFIRM MODAL ═══ -->
+<div class="modal-overlay" id="modal-cancel">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" style="color:var(--accent2)"><i class="fa fa-trash" style="margin-right:8px"></i>Cancel Waiting Call</div>
+      <button class="modal-close" onclick="closeModal('modal-cancel')"><i class="fa fa-times"></i></button>
+    </div>
+    <div style="color:var(--text2);font-size:14px;margin-bottom:8px">Are you sure you want to cancel this waiting call?</div>
+    <div class="modal-row"><span class="modal-key">From</span><span class="modal-val" id="mc-from"></span></div>
+    <div class="modal-row"><span class="modal-key">To</span><span class="modal-val" id="mc-to"></span></div>
+    <div class="modal-row"><span class="modal-key">Memo</span><span class="modal-val" id="mc-memo"></span></div>
+    <input type="hidden" id="mc-id"/>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-cancel')">Keep</button>
+      <button class="btn btn-primary" onclick="confirmCancel()"><i class="fa fa-trash"></i>Cancel Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CREATE USER MODAL ═══ -->
+<div class="modal-overlay" id="modal-create-user">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fa fa-user-plus" style="color:var(--green);margin-right:8px"></i>Create User</div>
+      <button class="modal-close" onclick="closeModal('modal-create-user')"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="form-group mb12">
+      <div class="form-label">Username</div>
+      <input class="form-control" id="cu-username" placeholder="Enter username"/>
+    </div>
+    <div class="form-group mb12">
+      <div class="form-label">Password</div>
+      <input class="form-control" type="password" id="cu-password" placeholder="Min 8 chars"/>
+    </div>
+    <div class="form-group mb12">
+      <div class="form-label">Account Type</div>
+      <select class="form-control" id="cu-role">
+        <option value="user">👤 User — can submit calls only</option>
+      </select>
+      <div id="cu-role-note" style="font-size:11px;margin-top:6px;padding:6px 10px;border-radius:6px;background:rgba(0,212,232,0.08);color:var(--text2)"></div>
+    </div>
+    <div class="form-group mb12" id="minute-limit-group">
+      <div class="form-label">Minute Limit (for Admin)</div>
+      <input class="form-control" type="number" id="cu-minutes" placeholder="e.g. 70000" min="1000" max="500000"/>
+      <div style="font-size:11px;color:var(--text3);margin-top:4px">How many minutes this admin can use (70,000 – 150,000)</div>
+    </div>
+    <div class="toggle-wrap mb12">
+      <div class="toggle on" id="cu-toggle" onclick="toggleEl(this)"><div class="toggle-thumb"></div></div>
+      <span class="toggle-label">Account Enabled</span>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:10px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:monospace;font-size:12px;color:var(--text2)" id="cu-apikey">\o?HcBM.:.G9:A</span>
+      <button onclick="copyKey()" style="background:transparent;border:none;color:var(--cyan);cursor:pointer;font-size:13px"><i class="fa fa-copy"></i></button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-create-user')">Cancel</button>
+      <button class="btn btn-cyan" onclick="createUser()"><i class="fa fa-check"></i>Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ COUNTRY PICKER MODAL ═══ -->
+<div class="modal-overlay" id="modal-country">
+  <div class="modal-box country-modal">
+    <div class="modal-header">
+      <div class="modal-title">Select Country</div>
+      <button class="modal-close" onclick="closeModal('modal-country')"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="country-search">
+      <i class="fa fa-search"></i>
+      <input placeholder="Search country..." id="country-search-inp" oninput="filterCountries()" autofocus/>
+    </div>
+    <div class="country-list" id="country-list-items"></div>
+  </div>
+</div>
+
+<!-- ═══ END CALL MODAL ═══ -->
+<div class="modal-overlay" id="modal-end-call">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" style="color:var(--accent2)"><i class="fa fa-phone-slash" style="margin-right:8px"></i>End Live Call</div>
+      <button class="modal-close" onclick="closeModal('modal-end-call')"><i class="fa fa-times"></i></button>
+    </div>
+    <div style="color:var(--text2);margin-bottom:16px">Confirm ending this active conference call. Both parties will be disconnected.</div>
+    <div class="modal-row"><span class="modal-key">From</span><span class="modal-val" id="me-from"></span></div>
+    <div class="modal-row"><span class="modal-key">To</span><span class="modal-val" id="me-to"></span></div>
+    <div class="modal-row"><span class="modal-key">Duration</span><span class="modal-val" id="me-dur"></span></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-end-call')">Keep Active</button>
+      <button class="btn btn-primary" onclick="doEndCall()"><i class="fa fa-phone-slash"></i>End Call</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- PWA Install Banner -->
+<div id="pwa-banner" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;background:var(--bg2);border:1px solid var(--accent);border-radius:12px;padding:14px 16px;z-index:150;box-shadow:0 4px 20px rgba(230,57,70,0.3)">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <span style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:10px;line-height:1.2;text-align:center">RED<br>SEA</span>
+    </div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:600;color:var(--text)">Install RED SEA App</div>
+      <div style="font-size:11px;color:var(--text2)">Add to home screen for app experience</div>
+    </div>
+    <button onclick="installPWA()" style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-display)">INSTALL</button>
+    <button onclick="document.getElementById('pwa-banner').style.display='none'" style="background:transparent;border:none;color:var(--text3);font-size:18px;cursor:pointer;padding:2px">×</button>
+  </div>
+</div>
+
+
+
+<script>
+// ═══ API CONFIG — change IP if opening on phone ═══
+const API_BASE = 'https://impaired-reshuffle-facedown.ngrok-free.app/api';
+
+async function api(method, path, body) {
+  try {
+    const res = await fetch(API_BASE + path, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    return await res.json();
+  } catch(e) {
+    console.warn('API offline - using local data');
+    return null;
+  }
+}
+
+// ═══ DATA ═══
+const COUNTRIES = [
+  {f:'🇦🇫',n:'Afghanistan',c:'+93'},{f:'🇦🇱',n:'Albania',c:'+355'},{f:'🇩🇿',n:'Algeria',c:'+213'},
+  {f:'🇦🇴',n:'Angola',c:'+244'},{f:'🇦🇷',n:'Argentina',c:'+54'},{f:'🇦🇲',n:'Armenia',c:'+374'},
+  {f:'🇦🇺',n:'Australia',c:'+61'},{f:'🇦🇹',n:'Austria',c:'+43'},{f:'🇧🇭',n:'Bahrain',c:'+973'},
+  {f:'🇧🇩',n:'Bangladesh',c:'+880'},{f:'🇧🇪',n:'Belgium',c:'+32'},{f:'🇧🇯',n:'Benin',c:'+229'},
+  {f:'🇧🇹',n:'Bhutan',c:'+975'},{f:'🇧🇴',n:'Bolivia',c:'+591'},{f:'🇧🇷',n:'Brazil',c:'+55'},
+  {f:'🇧🇫',n:'Burkina Faso',c:'+226'},{f:'🇧🇮',n:'Burundi',c:'+257'},{f:'🇨🇲',n:'Cameroon',c:'+237'},
+  {f:'🇨🇦',n:'Canada',c:'+1'},{f:'🇨🇫',n:'Central African Republic',c:'+236'},{f:'🇹🇩',n:'Chad',c:'+235'},
+  {f:'🇨🇳',n:'China',c:'+86'},{f:'🇨🇴',n:'Colombia',c:'+57'},{f:'🇨🇬',n:'Congo',c:'+242'},
+  {f:'🇨🇩',n:'Congo DR',c:'+243'},{f:'🇨🇮',n:"Cote d'Ivoire",c:'+225'},{f:'🇭🇷',n:'Croatia',c:'+385'},
+  {f:'🇨🇾',n:'Cyprus',c:'+357'},{f:'🇨🇿',n:'Czech Republic',c:'+420'},{f:'🇩🇰',n:'Denmark',c:'+45'},
+  {f:'🇩🇯',n:'Djibouti',c:'+253'},{f:'🇪🇬',n:'Egypt',c:'+20'},{f:'🇸🇻',n:'El Salvador',c:'+503'},
+  {f:'🇬🇶',n:'Equatorial Guinea',c:'+240'},{f:'🇪🇷',n:'Eritrea',c:'+291'},{f:'🇪🇹',n:'Ethiopia',c:'+251'},
+  {f:'🇫🇮',n:'Finland',c:'+358'},{f:'🇫🇷',n:'France',c:'+33'},{f:'🇬🇦',n:'Gabon',c:'+241'},
+  {f:'🇬🇲',n:'Gambia',c:'+220'},{f:'🇬🇪',n:'Georgia',c:'+995'},{f:'🇩🇪',n:'Germany',c:'+49'},
+  {f:'🇬🇭',n:'Ghana',c:'+233'},{f:'🇬🇷',n:'Greece',c:'+30'},{f:'🇬🇹',n:'Guatemala',c:'+502'},
+  {f:'🇬🇳',n:'Guinea',c:'+224'},{f:'🇭🇳',n:'Honduras',c:'+504'},{f:'🇭🇰',n:'Hong Kong',c:'+852'},
+  {f:'🇭🇺',n:'Hungary',c:'+36'},{f:'🇮🇳',n:'India',c:'+91'},{f:'🇮🇩',n:'Indonesia',c:'+62'},
+  {f:'🇮🇶',n:'Iraq',c:'+964'},{f:'🇮🇷',n:'Iran',c:'+98'},{f:'🇮🇪',n:'Ireland',c:'+353'},
+  {f:'🇮🇱',n:'Israel',c:'+972'},{f:'🇮🇹',n:'Italy',c:'+39'},{f:'🇯🇲',n:'Jamaica',c:'+1-876'},
+  {f:'🇯🇵',n:'Japan',c:'+81'},{f:'🇯🇴',n:'Jordan',c:'+962'},{f:'🇰🇿',n:'Kazakhstan',c:'+7'},
+  {f:'🇰🇪',n:'Kenya',c:'+254'},{f:'🇰🇼',n:'Kuwait',c:'+965'},{f:'🇰🇬',n:'Kyrgyzstan',c:'+996'},
+  {f:'🇱🇧',n:'Lebanon',c:'+961'},{f:'🇱🇷',n:'Liberia',c:'+231'},{f:'🇱🇾',n:'Libya',c:'+218'},
+  {f:'🇲🇬',n:'Madagascar',c:'+261'},{f:'🇲🇼',n:'Malawi',c:'+265'},{f:'🇲🇾',n:'Malaysia',c:'+60'},
+  {f:'🇲🇻',n:'Maldives',c:'+960'},{f:'🇲🇱',n:'Mali',c:'+223'},{f:'🇲🇷',n:'Mauritania',c:'+222'},
+  {f:'🇲🇽',n:'Mexico',c:'+52'},{f:'🇲🇩',n:'Moldova',c:'+373'},{f:'🇲🇦',n:'Morocco',c:'+212'},
+  {f:'🇲🇿',n:'Mozambique',c:'+258'},{f:'🇲🇲',n:'Myanmar',c:'+95'},{f:'🇳🇦',n:'Namibia',c:'+264'},
+  {f:'🇳🇵',n:'Nepal',c:'+977'},{f:'🇳🇱',n:'Netherlands',c:'+31'},{f:'🇳🇿',n:'New Zealand',c:'+64'},
+  {f:'🇳🇬',n:'Nigeria',c:'+234'},{f:'🇳🇴',n:'Norway',c:'+47'},{f:'🇴🇲',n:'Oman',c:'+968'},
+  {f:'🇵🇰',n:'Pakistan',c:'+92'},{f:'🇵🇸',n:'Palestine',c:'+970'},{f:'🇵🇭',n:'Philippines',c:'+63'},
+  {f:'🇵🇱',n:'Poland',c:'+48'},{f:'🇵🇹',n:'Portugal',c:'+351'},{f:'🇶🇦',n:'Qatar',c:'+974'},
+  {f:'🇷🇴',n:'Romania',c:'+40'},{f:'🇷🇺',n:'Russia',c:'+7'},{f:'🇷🇼',n:'Rwanda',c:'+250'},
+  {f:'🇸🇦',n:'Saudi Arabia',c:'+966'},{f:'🇸🇳',n:'Senegal',c:'+221'},{f:'🇸🇱',n:'Sierra Leone',c:'+232'},
+  {f:'🇸🇬',n:'Singapore',c:'+65'},{f:'🇸🇰',n:'Slovakia',c:'+421'},{f:'🇸🇮',n:'Slovenia',c:'+386'},
+  {f:'🇸🇴',n:'Somalia',c:'+252'},{f:'🇿🇦',n:'South Africa',c:'+27'},{f:'🇸🇸',n:'South Sudan',c:'+211'},
+  {f:'🇪🇸',n:'Spain',c:'+34'},{f:'🇱🇰',n:'Sri Lanka',c:'+94'},{f:'🇸🇩',n:'Sudan',c:'+249'},
+  {f:'🇸🇿',n:'Swaziland',c:'+268'},{f:'🇸🇪',n:'Sweden',c:'+46'},{f:'🇨🇭',n:'Switzerland',c:'+41'},
+  {f:'🇸🇾',n:'Syria',c:'+963'},{f:'🇹🇼',n:'Taiwan',c:'+886'},{f:'🇹🇿',n:'Tanzania',c:'+255'},
+  {f:'🇹🇭',n:'Thailand',c:'+66'},{f:'🇹🇬',n:'Togo',c:'+228'},{f:'🇹🇳',n:'Tunisia',c:'+216'},
+  {f:'🇹🇷',n:'Turkey',c:'+90'},{f:'🇺🇬',n:'Uganda',c:'+256'},{f:'🇦🇪',n:'United Arab Emirates',c:'+971'},
+  {f:'🇬🇧',n:'United Kingdom',c:'+44'},{f:'🇺🇸',n:'United States',c:'+1'},{f:'🇺🇿',n:'Uzbekistan',c:'+998'},
+  {f:'🇾🇪',n:'Yemen',c:'+967'},{f:'🇿🇲',n:'Zambia',c:'+260'},{f:'🇿🇼',n:'Zimbabwe',c:'+263'}
+];
+
+let currentRole = 'user';
+let currentUser = 'ridwan';
+let countryTarget = 'from';
+let fromCountry = {f:'🇪🇬',n:'Egypt',c:'+20'};
+let toCountry = {f:'🇪🇷',n:'Eritrea',c:'+291'};
+
+let waitingCalls = [
+  {id:'w1',from:'+201117335103',to:'+2917239135',memo:'ECOWAYS',limit:60,time:'04:37 PM Sat 30 May',user:'ridwan'},
+  {id:'w2',from:'+201080732136',to:'+2917126224',memo:'ECOWAY',limit:50,time:'05:10 PM Sat 30 May',user:'hamudi'},
+  {id:'w3',from:'+201148973168',to:'+2917283181',memo:'hamudi',limit:100,time:'05:20 PM Sat 30 May',user:'hamudi'},
+  {id:'w4',from:'+201156658349',to:'+2917273034',memo:'tah',limit:100,time:'05:23 PM Sat 30 May',user:'omer'},
+];
+
+const historyCalls = [
+  {from:'+201157720192',to:'+2917497824',memo:'selam',limit:100,dur:'Cut-Off',status:'cutoff',time:'06:22 PM Sat 30 May',user:'ridwan'},
+  {from:'+201158484786',to:'+2917414430',memo:'ECOWAYS',limit:60,dur:'No Network',status:'nonet',time:'05:02 PM Sat 30 May',user:'ridwan'},
+  {from:'+201501448311',to:'+2917432757',memo:'ECOWAY',limit:500,dur:'2 min',status:'success',time:'04:32 PM Sat 30 May',user:'hamudi'},
+  {from:'+201507968681',to:'+2917424340',memo:'',limit:100,dur:'55 min',status:'success',time:'04:29 PM Sat 30 May',user:'omer'},
+  {from:'+201229517767',to:'+2917580873',memo:'ECOWAYS',limit:60,dur:'No Network',status:'nonet',time:'06:26 AM Sat 30 May',user:'ridwan'},
+  {from:'+201204749620',to:'+2917882445',memo:'ridwan.as',limit:100,dur:'No Network',status:'nonet',time:'10:23 PM Fri 03 Apr',user:'ridwan'},
+  {from:'+201109186271',to:'+2917112907',memo:'mohmedidris.as',limit:100,dur:'No Network',status:'nonet',time:'10:23 PM Fri 03 Apr',user:'hamudi'},
+  {from:'+201105147695',to:'+2917551458',memo:'',limit:100,dur:'No Network',status:'nonet',time:'10:22 PM Fri 03 Apr',user:'omer'},
+];
+
+const users = [
+  {id:'u1',name:'Ridwan',role:'master',enabled:true,today:68,yesterday:46,month:14820,lastMonth:910,password:'RedSea2024'},
+];
+
+const liveCallsData = [
+  {from:'+201157720192',to:'+2917497824',dur:'12 min',memo:'selam',user:'ridwan',live:true},
+  {from:'+201501448311',to:'+2917432757',dur:'2 min',memo:'ECOWAY',user:'hamudi',live:false},
+];
+
+// ═══ AUTH ═══
+let loginRole = 'user';
+let rememberMe = false;
+
+function setLoginRole(role, el) {
+  loginRole = role;
+}
+
+function toggleRemember(){
+  rememberMe = !rememberMe;
+  var box = document.getElementById('remember-box');
+  var chk = document.getElementById('remember-check');
+  box.style.background = rememberMe ? 'var(--accent)' : 'transparent';
+  box.style.borderColor = rememberMe ? 'var(--accent)' : 'var(--border)';
+  chk.style.display = rememberMe ? 'block' : 'none';
+}
+
+function checkRemembered(){
+  try {
+    var saved = localStorage.getItem('rs_remember');
+    if(saved){
+      var data = JSON.parse(saved);
+      if(!data.username || !data.password) return;
+      // Auto-fill
+      document.getElementById('l-user').value = data.username;
+      document.getElementById('l-pass').value = data.password;
+      rememberMe = true;
+      toggleRemember();
+      // Hide applock and show login
+      document.getElementById('applock-screen').style.display='none';
+      document.getElementById('login-screen').style.display='flex';
+      // Auto login
+      setTimeout(function(){ doLogin(); }, 400);
+    }
+  } catch(e){ console.log('checkRemembered error:', e); }
+}
+// Master credentials — NEVER overwritten by localStorage
+const MASTER_ACCOUNTS = [
+  {name:'Ridwan', password:'RedSea2024', role:'master'}
+];
+
+async function doLogin() {
+  const u = document.getElementById('l-user').value.trim();
+  const p = document.getElementById('l-pass').value.trim();
+  if(!u||!p){showToast('Enter username and password','red');return;}
+
+  // 1. Check master accounts first (hardcoded, always works)
+  const masterAccount = MASTER_ACCOUNTS.find(x=>x.name.toLowerCase()===u.toLowerCase());
+  if(masterAccount){
+    // Check if master changed their password in localStorage
+    let masterPass = masterAccount.password;
+    try{
+      var savedPass = localStorage.getItem('master_password_'+u.toLowerCase());
+      if(savedPass) masterPass = savedPass;
+    }catch(e){}
+
+    if(p !== masterPass){
+      showToast('Wrong password','red');
+      return;
+    }
+    currentRole = 'master';
+    loginRole = 'master';
+    currentUser = u;
+    // Skip to login success
+    finishLogin(u, 'master');
+    return;
+  }
+
+  // 2. Load saved users from localStorage
+  loadUsersLocal();
+
+  // 3. Find user in list
+  const localUser = users.find(x=>x.name.toLowerCase()===u.toLowerCase());
+
+  if(localUser){
+    if(!localUser.enabled){
+      showToast('Account disabled. Contact master.','red');
+      return;
+    }
+    if(localUser.password && localUser.password !== p){
+      showToast('Wrong password','red');
+      return;
+    }
+    currentRole = localUser.role || 'user';
+    loginRole   = currentRole;
+    currentUser = u;
+    finishLogin(u, currentRole);
+    return;
+  }
+
+  // 4. Try server as last resort
+  showToast('Checking...','cyan');
+  const result = await api('POST', '/login', { username: u, password: p });
+  if(result && result.success){
+    currentRole = result.user.role;
+    loginRole   = currentRole;
+    currentUser = u;
+    finishLogin(u, currentRole);
+    return;
+  }
+  showToast('Account not found. Ask master.','red');
+}
+
+async function finishLogin(u, role) {
+  currentUser = u;
+  currentRole = role;
+  loginRole   = role;
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('main-app').style.display='flex';
+  document.getElementById('sidebar-name').textContent = u;
+  document.getElementById('sidebar-role').textContent = currentRole.toUpperCase();
+  document.getElementById('sidebar-avatar').textContent = u[0].toUpperCase();
+  document.getElementById('profile-avatar-lg').innerHTML = u[0].toUpperCase() + '<div class="profile-online"></div>';
+  document.getElementById('profile-name-lg').textContent = u.charAt(0).toUpperCase()+u.slice(1);
+  document.getElementById('profile-role-lg').textContent = currentRole.toUpperCase() + ' ACCOUNT';
+  if(currentRole==='admin'||currentRole==='master') {
+    document.getElementById('nav-admin-section').style.display='block';
+    var dlBtn = document.getElementById('nav-download');
+    if(dlBtn) dlBtn.style.display='flex';
+  }
+
+  // Load fresh data from server
+  await loadServerData();
+  loadUsersLocal();
+  loadSavedUAE();
+  renderAll();
+  goScreen('feed');
+  setupMobileNav(currentRole);
+  sessionStorage.setItem('rs_unlocked','1');
+  // Save remember me
+  if(rememberMe){
+    try{ localStorage.setItem('rs_remember', JSON.stringify({username:u, password:document.getElementById('l-pass').value})); }catch(e){}
+  } else {
+    try{ localStorage.removeItem('rs_remember'); }catch(e){}
+  }
+  showToast('Welcome ' + u + '! Role: ' + currentRole.toUpperCase(),'green');
+  // Force mobile UI on small screens
+  checkMobileLayout();
+}
+
+function checkMobileLayout(){
+  if(window.innerWidth <= 768){
+    setupMobileNav(currentRole);
+  }
+}
+// Re-check on resize
+window.addEventListener('resize', function(){
+  if(currentUser) checkMobileLayout();
+});
+
+async function loadServerData() {
+  const [hist, wait, live] = await Promise.all([
+    api('GET', '/calls/history?user='+currentUser),
+    api('GET', '/calls/waiting?user='+currentUser),
+    api('GET', '/calls/live'),
+  ]);
+  if(hist) callHistory.splice(0, callHistory.length, ...hist.reverse());
+  if(wait) { waitingCalls.splice(0, waitingCalls.length, ...wait); }
+  if(live) liveCallsData.splice(0, liveCallsData.length, ...live);
+}
+function doLogout() {
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('main-app').style.display='none';
+  document.getElementById('nav-admin-section').style.display='none';
+
+  currentRole='user'; currentUser='';
+}
+
+// ═══ SCREENS ═══
+const screenTitles = {feed:'Call Feed',submit:'New Call',waiting:'Waiting Queue',dashboard:'Dashboard',users:'Users',livecalls:'Live Calls',uae:'UAE Phone',profile:'My Profile',download:'Download App'};
+function goScreen(name) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const s = document.getElementById('screen-'+name);
+  if(s) s.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const ni = document.getElementById('nav-'+name);
+  if(ni) ni.classList.add('active');
+  document.getElementById('topbar-title').textContent = screenTitles[name]||name;
+  if(name==='waiting') renderWaitingScreen();
+  if(name==='dashboard') renderDashboard();
+  if(name==='users') renderUsers();
+  if(name==='livecalls') renderLiveCalls();
+  if(name==='profile') renderProfile();
+}
+
+// ═══ RENDER HISTORY ═══
+function statusIcon(s){
+  if(s==='success') return ['ce-success','fa-check'];
+  if(s==='failed') return ['ce-failed','fa-times'];
+  if(s==='pending') return ['ce-pending','fa-clock'];
+  if(s==='cutoff') return ['ce-cutoff','fa-cut'];
+  return ['ce-nonet','fa-wifi'];
+}
+function renderHistory(arr) {
+  return arr.map(c=>{
+    const [cls,ico] = statusIcon(c.status||'nonet');
+    return `<div class="call-entry" onclick="showRecall('${c.from}','${c.to}','${c.memo||''}','${c.limit}')">
+      <div class="call-entry-icon ${cls}"><i class="fa fa-${ico}"></i></div>
+      <div class="call-entry-body">
+        <div class="ce-row"><span class="ce-label">From</span><span class="ce-value">${c.from}</span></div>
+        <div class="ce-row"><span class="ce-label">To</span><span class="ce-value">${c.to}</span></div>
+        <div class="ce-row"><span class="ce-label">Dur</span><span class="ce-value">${c.dur} L=${c.limit}</span>${c.memo?`<span class="ce-memo" style="margin-left:8px">${c.memo}</span>`:''}</div>
+      </div>
+      <div class="call-entry-meta">
+        <div class="ce-time">${c.time.replace(' ','\n')}</div>
+        <div class="ce-actions"><button class="ce-btn" onclick="event.stopPropagation();showRecall('${c.from}','${c.to}','${c.memo||''}','${c.limit}')"><i class="fa fa-redo" style="font-size:10px"></i> Recall</button></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderWaitingCards(arr, container) {
+  const el = document.getElementById(container);
+  if(!el) return;
+  if(!arr.length){el.innerHTML='<div style="text-align:center;color:var(--text3);padding:40px;font-size:14px"><i class="fa fa-check-circle" style="font-size:32px;display:block;margin-bottom:12px;color:var(--green)"></i>No waiting calls</div>';return;}
+  el.innerHTML = arr.map(c=>`
+    <div class="call-entry" id="wc-${c.id}">
+      <div class="call-entry-icon ce-pending"><i class="fa fa-clock"></i></div>
+      <div class="call-entry-body">
+        <div class="ce-row"><span class="ce-label">From</span><span class="ce-value">${c.from}</span></div>
+        <div class="ce-row"><span class="ce-label">To</span><span class="ce-value">${c.to}</span></div>
+        <div class="ce-row"><span class="ce-label" style="color:var(--orange)">Pending L=${c.limit}</span>${c.memo?`<span class="ce-memo" style="margin-left:8px">${c.memo}</span>`:''}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:3px">${c.time}</div>
+      </div>
+      <div class="call-entry-meta">
+        <div class="ce-actions" style="margin-top:8px">
+          <button class="ce-btn danger" onclick="openCancelWait('${c.id}')"><i class="fa fa-trash" style="font-size:10px"></i> Cancel</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function renderAll() {
+  document.getElementById('history-cards').innerHTML = renderHistory(historyCalls);
+  renderWaitingCards(waitingCalls,'waiting-cards');
+  var tb = document.querySelector('#tab-waiting-tab span');
+  if(tb) tb.textContent = waitingCalls.length;
+  if(typeof updateMobileBadges === 'function') updateMobileBadges();
+}
+
+function renderWaitingScreen(){renderWaitingCards(waitingCalls,'waiting-cards-screen');}
+
+function feedTab(tab, el) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('feed-history').style.display = tab==='history'?'block':'none';
+  document.getElementById('feed-waiting').style.display = tab==='waiting'?'block':'none';
+  if(tab==='waiting') renderWaitingCards(waitingCalls,'waiting-cards');
+}
+
+// ═══ RENDER DASHBOARD ═══
+function renderDashboard(){
+  const tl = document.getElementById('top-users-list');
+  tl.innerHTML = users.sort((a,b)=>b.month-a.month).map(u=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(230,57,70,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent2)">${u.name[0].toUpperCase()}</div>
+        <span style="font-size:13px;color:var(--text)">${u.name}</span>
+      </div>
+      <div style="text-align:right"><div style="font-size:13px;font-weight:600;color:var(--cyan)">${u.month} <span style="font-size:10px;color:var(--text3)">min</span></div><div style="font-size:10px;color:var(--text3)">this month</div></div>
+    </div>`).join('');
+  const ra = document.getElementById('recent-activity-list');
+  ra.innerHTML = historyCalls.slice(0,5).map(c=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border2)">
+      <i class="fa fa-phone-alt" style="color:var(--text3);font-size:12px;width:16px"></i>
+      <div style="flex:1">
+        <div style="font-size:12px;color:var(--text)">${c.from.slice(-6)} → ${c.to.slice(-6)}</div>
+        <div style="font-size:11px;color:var(--text3)">${c.dur} · ${c.user}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ═══ RENDER USERS ═══
+function renderUsers(){
+  document.getElementById('users-list').innerHTML = users.map(u=>{
+    // Master can manage all, Admin can only manage users (not other admins/master)
+    const canManage = currentRole==='master' || (currentRole==='admin' && u.role==='user');
+    const isSelf = u.name.toLowerCase()===currentUser.toLowerCase();
+    return `<div class="user-entry" style="${!u.enabled?'opacity:0.6':''}">
+      <div class="user-avatar" style="background:${u.role==='master'?'linear-gradient(135deg,#ffd166,#ff9f1c)':u.role==='admin'?'linear-gradient(135deg,#00d4e8,#0097a7)':'linear-gradient(135deg,var(--accent),var(--accent2))'}">
+        ${u.name[0].toUpperCase()}
+      </div>
+      <div class="user-info">
+        <div class="user-name">${u.name} ${isSelf?'<span style="font-size:10px;color:var(--text3)">(you)</span>':''}</div>
+        <div class="user-meta">
+          <span style="color:${u.role==='master'?'var(--gold)':u.role==='admin'?'var(--cyan)':'var(--text2)'}">${u.role.toUpperCase()}</span>
+          · ${u.enabled?'<span style="color:var(--green)">✅ Active</span>':'<span style="color:var(--accent2)">❌ Disabled</span>'}
+        </div>
+        <div class="user-stats">
+          <div class="user-stat">Today <span>${u.today}</span></div>
+          <div class="user-stat">Month <span>${u.month}</span></div>
+        </div>
+      </div>
+      <div class="user-actions" style="flex-direction:column;gap:4px">
+        ${canManage && !isSelf ? `
+          <button class="icon-btn ${u.enabled?'danger':'success'}" onclick="toggleUser('${u.id}')" title="${u.enabled?'Disable account':'Enable account'}" style="width:auto;padding:4px 10px;font-size:11px">
+            ${u.enabled?'🚫 Disable':'✅ Enable'}
+          </button>
+          ${currentRole==='master'?`<button class="icon-btn danger" onclick="deleteUser('${u.id}','${u.name}')" title="Delete user" style="width:auto;padding:4px 10px;font-size:11px">🗑 Delete</button>`:''}
+        `:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleUser(id){
+  const u = users.find(x=>x.id===id);
+  if(!u) return;
+  // Master can disable anyone, Admin can only disable users
+  if(currentRole==='admin' && u.role!=='user'){
+    showToast('Admin can only disable User accounts','red'); return;
+  }
+  u.enabled=!u.enabled;
+  saveUsersLocal();
+  api('PATCH','/users/'+id,{enabled:u.enabled});
+  renderUsers();
+  showToast(u.name+(u.enabled?' ✅ enabled':'❌ disabled'),u.enabled?'green':'red');
+}
+
+function deleteUser(id, name){
+  if(currentRole!=='master'){ showToast('Only Master can delete accounts','red'); return; }
+  if(!confirm('Delete user '+name+'? This cannot be undone.')) return;
+  const idx = users.findIndex(x=>x.id===id);
+  if(idx>-1){
+    users.splice(idx,1);
+    saveUsersLocal();
+    api('DELETE','/users/'+id,{});
+    renderUsers();
+    showToast(name+' deleted','red');
+  }
+}
+
+// ═══ RENDER LIVE CALLS ═══
+function renderLiveCalls(){
+  document.getElementById('live-calls-list').innerHTML = liveCallsData.map((c,i)=>`
+    <div class="call-entry">
+      <div class="call-entry-icon ${c.live?'ce-success':'ce-nonet'}"><i class="fa fa-${c.live?'broadcast-tower':'phone-alt'}"></i></div>
+      <div class="call-entry-body">
+        <div class="ce-row"><span class="ce-label">From</span><span class="ce-value">${c.from}</span></div>
+        <div class="ce-row"><span class="ce-label">To</span><span class="ce-value">${c.to}</span></div>
+        <div class="ce-row"><span class="ce-label">Dur</span><span class="ce-value ${c.live?'text-green':''}">${c.dur}</span>${c.live?'<span class="live-badge" style="margin-left:8px"><div class="live-dot"></div>LIVE</span>':''}</div>
+        <div class="ce-row"><span class="ce-label">User</span><span class="ce-memo">${c.user}</span>${c.live?'<span style="margin-left:8px;background:rgba(255,209,102,0.12);color:var(--gold);border:1px solid rgba(255,209,102,0.3);font-size:10px;padding:2px 7px;border-radius:6px;font-weight:600">🔇 UAE Muted</span>':''}</div>
+      </div>
+      <div class="call-entry-meta">
+        ${c.live?`<button class="ce-btn danger" onclick="openEndCall(${i})"><i class="fa fa-phone-slash" style="font-size:10px"></i> End</button>`:'<i class="fa fa-phone-outgoing" style="color:var(--text3)"></i>'}
+      </div>
+    </div>`).join('');
+}
+
+// ═══ RENDER PROFILE ═══
+function renderProfile(){
+  const u = users.find(x=>x.name.toLowerCase()===currentUser.toLowerCase())||users[0];
+  if(u){
+    document.getElementById('p-today').textContent=u.today;
+    document.getElementById('p-yesterday').textContent=u.yesterday;
+    document.getElementById('p-month').textContent=u.month;
+    document.getElementById('p-last').textContent=u.lastMonth;
+  }
+  const myCalls = historyCalls.filter(c=>c.user.toLowerCase()===currentUser.toLowerCase()).slice(0,5);
+  document.getElementById('my-calls-list').innerHTML = myCalls.length ? renderHistory(myCalls) : '<div style="text-align:center;color:var(--text3);padding:20px">No calls yet</div>';
+  // Show master section only for master
+  var masterSec = document.getElementById('master-code-section');
+  if(masterSec) masterSec.style.display = currentRole==='master' ? 'block' : 'none';
+  // Show current app code
+  var codeDisp = document.getElementById('current-code-display');
+  if(codeDisp) codeDisp.textContent = APP_ACCESS_CODE;
+}
+
+// ═══ SUBMIT CALL ═══
+async function submitCall(){
+  const from = document.getElementById('inp-from').value.trim();
+  const to = document.getElementById('inp-to').value.trim();
+  const limit = document.getElementById('inp-limit').value.trim();
+  if(!from||!to||!limit){showToast('Please fill From, To and Limit','red');return;}
+  const payload = {
+    from: fromCountry.c + from,
+    to: toCountry.c + to,
+    memo: document.getElementById('inp-memo').value.trim(),
+    limit: parseInt(limit),
+    user: currentUser
+  };
+  showToast('Submitting call...','cyan');
+  const result = await api('POST', '/calls/submit', payload);
+  const newWait = result && result.success ? result.call : {
+    id:'w'+Date.now(), ...payload,
+    time: new Date().toLocaleTimeString()+' Now', status:'pending'
+  };
+  waitingCalls.push(newWait);
+  document.getElementById('inp-from').value='';
+  document.getElementById('inp-to').value='';
+  document.getElementById('inp-memo').value='';
+  document.getElementById('inp-limit').value='';
+  renderAll();
+  showToast('Call submitted! Egypt called first 🇪🇬','green');
+  goScreen('feed');
+  document.getElementById('tab-waiting-tab').click();
+}
+
+// ═══ RECALL ═══
+function showRecall(from,to,memo,limit){
+  document.getElementById('mr-from').textContent=from;
+  document.getElementById('mr-to').textContent=to;
+  document.getElementById('mr-memo').textContent=memo||'—';
+  document.getElementById('mr-limit').value=limit;
+  openModal('modal-recall');
+}
+function doRecall(){
+  closeModal('modal-recall');
+  showToast('Call recalled successfully!','cyan');
+}
+
+// ═══ CANCEL WAIT ═══
+function openCancelWait(id){
+  const c = waitingCalls.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('mc-from').textContent=c.from;
+  document.getElementById('mc-to').textContent=c.to;
+  document.getElementById('mc-memo').textContent=c.memo||'—';
+  document.getElementById('mc-id').value=id;
+  openModal('modal-cancel');
+}
+async function confirmCancel(){
+  const id = document.getElementById('mc-id').value;
+  await api('DELETE', '/calls/waiting/'+id, {user: currentUser, role: currentRole});
+  waitingCalls = waitingCalls.filter(x=>x.id!==id);
+  closeModal('modal-cancel');
+  renderAll();
+  renderWaitingScreen();
+  showToast('Waiting call cancelled','red');
+}
+
+// ═══ END CALL ═══
+function openEndCall(i){
+  const c = liveCallsData[i];
+  document.getElementById('me-from').textContent=c.from;
+  document.getElementById('me-to').textContent=c.to;
+  document.getElementById('me-dur').textContent=c.dur;
+  openModal('modal-end-call');
+}
+async function doEndCall(){
+  const from = document.getElementById('me-from').textContent;
+  const call = liveCallsData.find(c=>c.from===from);
+  if(call) {
+    await api('POST', '/calls/live/'+call.id+'/end', {});
+    call.live=false; call.uaeMuted=false;
+  }
+  closeModal('modal-end-call');
+  showToast('Call ended by admin','red');
+  renderLiveCalls();
+}
+
+// ═══ CREATE USER ═══
+function openCreateUser(){
+  const sel = document.getElementById('cu-role');
+  const note = document.getElementById('cu-role-note');
+  if(currentRole === 'master'){
+    sel.innerHTML = '<option value="user">👤 User — submit calls only</option><option value="admin">🛡 Admin — manage users & dashboard</option>';
+    note.innerHTML = '👑 <b>Master:</b> You can create both User and Admin accounts';
+  } else if(currentRole === 'admin'){
+    sel.innerHTML = '<option value="user">👤 User — submit calls only</option>';
+    note.innerHTML = '🛡 <b>Admin:</b> You can only create User accounts';
+  }
+  // Clear fields
+  document.getElementById('cu-username').value='';
+  document.getElementById('cu-password').value='';
+  openModal('modal-create-user');
+}
+async function createUser(){
+  const name = document.getElementById('cu-username').value.trim();
+  const pass = document.getElementById('cu-password').value.trim();
+  const role = document.getElementById('cu-role').value;
+  if(!name||!pass){showToast('Fill username and password','red');return;}
+  if(pass.length<6){showToast('Password must be 6+ chars','red');return;}
+  if(users.find(u=>u.name.toLowerCase()===name.toLowerCase())){
+    showToast('Username already exists','red');return;
+  }
+  if(role==='admin'&&currentRole!=='master'){
+    showToast('Only Master can create Admin accounts','red');return;
+  }
+  const newU = {id:'u'+Date.now(),name,role,enabled:true,
+    today:0,yesterday:0,month:0,lastMonth:0,
+    password:pass,
+    minuteLimit: role==='admin' ? 70000 : 0
+  };
+  users.push(newU);
+  saveUsersLocal();
+  await api('POST','/users',{username:name,password:pass,role});
+  closeModal('modal-create-user');
+  document.getElementById('cu-username').value='';
+  document.getElementById('cu-password').value='';
+  renderUsers();
+
+  // Generate shareable login key
+  const loginKey = btoa(JSON.stringify({n:name,p:pass,r:role,ml:newU.minuteLimit}));
+  showLoginKeyModal(name, loginKey);
+}
+
+function showLoginKeyModal(name, key){
+  // Create modal to show the key
+  const overlay = document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML=`
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;width:100%;max-width:400px">
+      <div style="font-family:var(--font-display);font-size:18px;color:var(--green);margin-bottom:8px">✅ User Created!</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:16px">Share this login key with <b style="color:var(--cyan)">${name}</b>. They paste it in the app to login from any phone.</div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:11px;color:var(--cyan);word-break:break-all;font-family:monospace;margin-bottom:12px" id="share-key">${key}</div>
+      <div style="display:flex;gap:8px">
+        <button onclick="copyLoginKey('${key}')" style="flex:1;background:var(--cyan);color:#000;border:none;border-radius:8px;padding:10px;font-weight:700;cursor:pointer;font-family:var(--font-display)">📋 Copy Key</button>
+        <button onclick="shareLoginKey('${name}','${key}')" style="flex:1;background:var(--green);color:#000;border:none;border-radius:8px;padding:10px;font-weight:700;cursor:pointer;font-family:var(--font-display)">📱 Share</button>
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-top:10px;text-align:center">They paste this key in the app login screen → Enter Key tab</div>
+      <button onclick="this.closest('[style*=fixed]').remove()" style="width:100%;margin-top:10px;background:var(--bg4);color:var(--text2);border:1px solid var(--border);border-radius:8px;padding:8px;cursor:pointer">Close</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function copyLoginKey(key){
+  navigator.clipboard.writeText(key).then(()=>showToast('Login key copied!','cyan')).catch(()=>showToast('Key copied!','cyan'));
+}
+function shareLoginKey(name, key){
+  const text = 'RED SEA App Login Key for '+name+':\n'+key+'\n\nOpen app → Login → paste this key';
+  if(navigator.share){
+    navigator.share({title:'RED SEA Login Key',text:text});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>showToast('Copied to clipboard!','cyan'));
+  }
+}
+
+function saveUsersLocal(){
+  localStorage.setItem('rs_users', JSON.stringify(users));
+}
+
+function loadUsersLocal(){
+  const saved = localStorage.getItem('rs_users');
+  if(saved){
+    const parsed = JSON.parse(saved);
+    // Merge with default users
+    parsed.forEach(u=>{
+      if(!users.find(x=>x.name.toLowerCase()===u.name.toLowerCase())) users.push(u);
+    });
+  }
+}
+
+// ═══ UAE ═══
+async function saveUAE(){
+  const num = document.getElementById('uae-num-inp').value.trim();
+  const device = document.getElementById('uae-device').value.trim();
+  const sim = document.getElementById('uae-sim-slot').value;
+  if(!num){showToast('Enter UAE number','red');return;}
+  // Save locally always
+  const saved = '+971'+num.replace(/\D/g,'');
+  document.getElementById('uae-sim1').textContent = saved;
+  // Save to localStorage so it persists
+  localStorage.setItem('uae_number', saved);
+  localStorage.setItem('uae_device', device);
+  // Try server too
+  await api('POST', '/uae', {number: num, simSlot: sim, deviceName: device});
+  showToast('UAE number saved! 🔇 Auto-mute ON','cyan');
+}
+
+function loadSavedUAE(){
+  const saved = localStorage.getItem('uae_number');
+  const device = localStorage.getItem('uae_device');
+  if(saved){ document.getElementById('uae-sim1').textContent = saved; }
+  if(device){ const el=document.getElementById('uae-device'); if(el) el.value=device; }
+}
+
+// ═══ COUNTRY PICKER ═══
+function openCountry(target){
+  countryTarget=target;
+  document.getElementById('country-search-inp').value='';
+  renderCountryList(COUNTRIES);
+  openModal('modal-country');
+}
+function renderCountryList(arr){
+  document.getElementById('country-list-items').innerHTML = arr.map(c=>`
+    <div class="country-item" onclick="selectCountry('${c.f}','${c.n}','${c.c}')">
+      <span class="ci-flag">${c.f}</span>
+      <span class="ci-name">${c.n}</span>
+      <span class="ci-code">${c.c}</span>
+    </div>`).join('');
+}
+function filterCountries(){
+  const q = document.getElementById('country-search-inp').value.toLowerCase();
+  renderCountryList(COUNTRIES.filter(c=>c.n.toLowerCase().includes(q)||c.c.includes(q)));
+}
+function selectCountry(f,n,c){
+  if(countryTarget==='from'){
+    fromCountry={f,n,c};
+    document.getElementById('from-flag-btn').innerHTML=`${f} ${c} <i class="fa fa-chevron-down" style="font-size:10px"></i>`;
+  } else {
+    toCountry={f,n,c};
+    document.getElementById('to-flag-btn').innerHTML=`${f} ${c} <i class="fa fa-chevron-down" style="font-size:10px"></i>`;
+  }
+  closeModal('modal-country');
+}
+
+// ═══ SEARCH ═══
+function globalSearch(){
+  const q = document.getElementById('global-search').value.toLowerCase();
+  if(!q){document.getElementById('history-cards').innerHTML=renderHistory(historyCalls);return;}
+  const filtered = historyCalls.filter(c=>c.from.includes(q)||c.to.includes(q)||(c.memo||'').toLowerCase().includes(q)||c.user.includes(q));
+  document.getElementById('history-cards').innerHTML = filtered.length?renderHistory(filtered):'<div style="text-align:center;color:var(--text3);padding:40px">No results found</div>';
+}
+
+// ═══ MODAL ═══
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('open');
+});
+
+// ═══ TOGGLE ═══
+function toggleEl(el){el.classList.toggle('on');}
+
+// ═══ COPY KEY ═══
+function copyKey(){
+  const k=document.getElementById('cu-apikey').textContent;
+  navigator.clipboard.writeText(k).then(()=>showToast('API key copied!','cyan')).catch(()=>showToast('Copied!','cyan'));
+}
+
+// ═══ APP LOCK ═══
+// Default access code is 1234 — Master can change it
+var APP_ACCESS_CODE = localStorage.getItem('rs_app_code') || '1234';
+
+function checkAppLock(){
+  var input = document.getElementById('applock-input').value;
+  var err = document.getElementById('applock-error');
+  if(input === APP_ACCESS_CODE){
+    document.getElementById('applock-screen').style.display='none';
+    document.getElementById('login-screen').style.display='flex';
+    err.textContent='';
+  } else {
+    err.textContent='Wrong access code. Contact master.';
+    document.getElementById('applock-input').value='';
+    // Shake effect
+    var box = document.getElementById('applock-input');
+    box.style.borderColor='var(--accent)';
+    setTimeout(function(){ box.style.borderColor=''; }, 1000);
+  }
+}
+
+// Allow Enter key on applock
+document.addEventListener('DOMContentLoaded', function(){
+  var inp = document.getElementById('applock-input');
+  if(inp) inp.addEventListener('keypress', function(e){ if(e.key==='Enter') checkAppLock(); });
+  // Enter key on login
+  var lpass = document.getElementById('l-pass');
+  if(lpass) lpass.addEventListener('keypress', function(e){ if(e.key==='Enter') doLogin(); });
+  // Check if already unlocked this session
+  if(sessionStorage.getItem('rs_unlocked')==='1'){
+    document.getElementById('applock-screen').style.display='none';
+    document.getElementById('login-screen').style.display='flex';
+    checkRemembered();
+    return;
+  }
+  // Check remember me — bypass applock too
+  checkRemembered();
+});
+
+function setAppCode(newCode){
+  if(!newCode || newCode.length < 4){
+    showToast('Code must be 4+ characters','red');
+    return;
+  }
+  APP_ACCESS_CODE = newCode;
+  try{ localStorage.setItem('rs_app_code', newCode); }catch(e){}
+  sessionStorage.setItem('rs_unlocked','1');
+  // Update display
+  var d = document.getElementById('current-code-display');
+  if(d) d.textContent = newCode;
+  showToast('App access code changed to: ' + newCode,'green');
+}
+
+function changeMasterPassword(){
+  if(currentRole !== 'master'){
+    showToast('Only master can change master password','red');
+    return;
+  }
+  const current = document.getElementById('cp-current').value.trim();
+  const newp    = document.getElementById('cp-new').value.trim();
+  const confirm = document.getElementById('cp-confirm').value.trim();
+
+  // Verify current password
+  const me = users.find(x => x.name.toLowerCase() === currentUser.toLowerCase());
+  if(!me){ showToast('User not found','red'); return; }
+  if(me.password !== current){
+    showToast('Current password is wrong','red');
+    document.getElementById('cp-current').value='';
+    return;
+  }
+  if(newp.length < 6){
+    showToast('New password must be 6+ characters','red');
+    return;
+  }
+  if(newp !== confirm){
+    showToast('Passwords do not match','red');
+    document.getElementById('cp-confirm').value='';
+    return;
+  }
+  // Update password in master accounts
+  try{
+    localStorage.setItem('master_password_'+currentUser.toLowerCase(), newp);
+  }catch(e){}
+  // Also update in users array if exists
+  if(me) me.password = newp;
+  saveUsersLocal();
+  // Clear remember me so next login uses new password
+  try{ localStorage.removeItem('rs_remember'); }catch(e){}
+  // Clear fields
+  document.getElementById('cp-current').value='';
+  document.getElementById('cp-new').value='';
+  document.getElementById('cp-confirm').value='';
+  showToast('✅ Password changed successfully!','green');
+}
+
+// ═══ LOGIN KEY SYSTEM ═══
+function switchLoginTab(tab){
+  const cred = document.getElementById('lt-credentials');
+  const key  = document.getElementById('lt-key');
+  const credSection = document.querySelector('.login-box .form-group');
+  const keySection  = document.getElementById('key-login-section');
+  const remSection  = document.getElementById('remember-box').parentElement.parentElement;
+  const enterBtn    = document.querySelector('button[onclick="doLogin()"]');
+
+  if(tab==='credentials'){
+    cred.style.cssText='flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;background:var(--accent);color:#fff;font-family:var(--font-display)';
+    key.style.cssText='flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text2);font-family:var(--font-display)';
+    if(keySection) keySection.style.display='none';
+    if(enterBtn) enterBtn.style.display='block';
+    if(remSection) remSection.style.display='flex';
+  } else {
+    key.style.cssText='flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;background:var(--accent);color:#fff;font-family:var(--font-display)';
+    cred.style.cssText='flex:1;text-align:center;padding:8px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text2);font-family:var(--font-display)';
+    if(keySection) keySection.style.display='block';
+    if(enterBtn) enterBtn.style.display='none';
+    if(remSection) remSection.style.display='none';
+  }
+}
+
+function loginWithKey(){
+  const keyVal = document.getElementById('inp-login-key').value.trim();
+  if(!keyVal){ showToast('Paste your login key','red'); return; }
+  try{
+    const data = JSON.parse(atob(keyVal));
+    if(!data.n||!data.p||!data.r){ showToast('Invalid key','red'); return; }
+    // Add user to local list
+    const existing = users.find(u=>u.name.toLowerCase()===data.n.toLowerCase());
+    if(!existing){
+      users.push({
+        id:'u'+Date.now(), name:data.n, role:data.r,
+        enabled:true, today:0, yesterday:0, month:0, lastMonth:0,
+        password:data.p, minuteLimit:data.ml||0
+      });
+      saveUsersLocal();
+    }
+    currentUser = data.n;
+    currentRole = data.r;
+    loginRole   = data.r;
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('main-app').style.display='flex';
+    document.getElementById('sidebar-name').textContent = data.n;
+    document.getElementById('sidebar-role').textContent = data.r.toUpperCase();
+    document.getElementById('sidebar-avatar').textContent = data.n[0].toUpperCase();
+    document.getElementById('profile-avatar-lg').innerHTML = data.n[0].toUpperCase()+'<div class="profile-online"></div>';
+    document.getElementById('profile-name-lg').textContent = data.n;
+    document.getElementById('profile-role-lg').textContent = data.r.toUpperCase()+' ACCOUNT';
+    sessionStorage.setItem('rs_unlocked','1');
+    if(data.r==='admin'||data.r==='master'){
+      document.getElementById('nav-admin-section').style.display='block';
+    }
+    loadUsersLocal();
+    loadSavedUAE();
+    renderAll();
+    goScreen('feed');
+    setupMobileNav(data.r);
+    showToast('Welcome '+data.n+'! Logged in with key ✅','green');
+  } catch(e){
+    showToast('Invalid key — ask master for new key','red');
+  }
+}
+
+// ═══ DOWNLOAD ═══
+function downloadAPK(){
+  showToast('Preparing RedSea_v2.0.apk download…','cyan');
+  // In production: replace href with your real APK URL
+  const a = document.createElement('a');
+  a.href = '#'; // Replace with: 'https://yourserver.com/RedSea_v2.0.apk'
+  a.download = 'RedSea_v2.0.apk';
+  showToast('Link the real APK file to enable download','gold');
+}
+
+
+// ═══════════════════════════════════════
+//  MOBILE NAV — COMPLETE
+// ═══════════════════════════════════════
+function isMobile(){ return window.innerWidth <= 600; }
+
+function openDrawer(){
+  const d = document.getElementById('mobile-drawer');
+  const o = document.getElementById('drawer-overlay');
+  if(d) d.classList.add('open');
+  if(o) o.classList.add('open');
+}
+function closeDrawer(){
+  const d = document.getElementById('mobile-drawer');
+  const o = document.getElementById('drawer-overlay');
+  if(d) d.classList.remove('open');
+  if(o) o.classList.remove('open');
+}
+function drawerGo(screen){
+  closeDrawer();
+  goScreen(screen);
+  updateMobileActive(screen);
+}
+function mobileTo(screen){
+  goScreen(screen);
+  updateMobileActive(screen);
+}
+function updateMobileActive(screen){
+  ['feed','waiting','profile'].forEach(function(s){
+    var el = document.getElementById('mb-'+s);
+    if(el) el.style.color = (s===screen) ? 'var(--accent)' : 'var(--text3)';
+  });
+}
+function toggleSidebar(){ openDrawer(); }
+function closeSidebar(){ closeDrawer(); }
+function mobileGo(s){ mobileTo(s); }
+
+function setupMobileNav(role){
+  // Always setup mobile nav regardless of screen size
+  // (detection happens via CSS media query)
+  var mt = document.getElementById('mobile-topbar');
+  var mb = document.getElementById('mobile-bottom');
+  if(mt) mt.style.display='flex';
+  if(mb) mb.style.display='flex';
+
+  // Update drawer user info
+  var da = document.getElementById('drawer-avatar');
+  var dn = document.getElementById('drawer-name');
+  var dr = document.getElementById('drawer-role');
+  if(da) da.textContent = currentUser[0].toUpperCase();
+  if(dn) dn.textContent = currentUser;
+  if(dr) dr.textContent = role.toUpperCase();
+
+  // ROLE BASED — show admin section only for admin/master
+  var adminSec = document.getElementById('drawer-admin-section');
+  if(adminSec){
+    adminSec.style.display = (role==='admin'||role==='master') ? 'block' : 'none';
+  }
+
+  // Content padding for mobile topbar + bottom nav
+  var c = document.querySelector('.content');
+  if(c){
+    c.style.paddingTop = '60px';
+    c.style.paddingBottom = '80px';
+  }
+  updateMobileBadges();
+}
+
+function updateMobileBadges(){
+  var n = waitingCalls.length;
+  var wb = document.getElementById('drawer-wait-badge');
+  if(wb) wb.textContent = n;
+  var tb = document.querySelector('#tab-waiting-tab span');
+  if(tb) tb.textContent = n;
+}
+
+function saveUsersLocal(){
+  try{ localStorage.setItem('rs_users', JSON.stringify(users)); }catch(e){}
+}
+function loadUsersLocal(){
+  try{
+    var saved = localStorage.getItem('rs_users');
+    if(saved){
+      var parsed = JSON.parse(saved);
+      parsed.forEach(function(u){
+        var existing = users.find(function(x){
+          return x.name.toLowerCase()===u.name.toLowerCase();
+        });
+        if(!existing){
+          // Add new users that dont exist in default list
+          users.push(u);
+        } else if(existing.role !== 'master'){
+          // Only update non-master accounts from localStorage
+          existing.enabled  = u.enabled;
+          existing.role     = u.role;
+          if(u.password) existing.password = u.password;
+          existing.today    = u.today    || existing.today;
+          existing.month    = u.month    || existing.month;
+          existing.yesterday= u.yesterday|| existing.yesterday;
+          existing.lastMonth= u.lastMonth|| existing.lastMonth;
+        }
+        // Master account is NEVER overwritten from localStorage
+      });
+    }
+  }catch(e){}
+}
+function loadSavedUAE(){
+  try{
+    var saved = localStorage.getItem('uae_number');
+    var device = localStorage.getItem('uae_device');
+    var el1 = document.getElementById('uae-sim1');
+    var el2 = document.getElementById('uae-device');
+    if(saved && el1) el1.textContent = saved;
+    if(device && el2) el2.value = device;
+  }catch(e){}
+}
+
+// ═══ PWA INSTALL ═══
+let pwaInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  pwaInstallPrompt = e;
+  // Show install banner after login
+  setTimeout(function(){
+    var banner = document.getElementById('pwa-banner');
+    if(banner && document.getElementById('main-app').style.display!=='none'){
+      banner.style.display='block';
+    }
+  }, 3000);
+});
+
+function installPWA(){
+  if(pwaInstallPrompt){
+    pwaInstallPrompt.prompt();
+    pwaInstallPrompt.userChoice.then(function(r){
+      if(r.outcome==='accepted'){
+        showToast('RED SEA installed! ✅','green');
+        document.getElementById('pwa-banner').style.display='none';
+      }
+      pwaInstallPrompt=null;
+    });
+  } else {
+    // iOS instructions
+    showToast('Tap Share → Add to Home Screen','cyan');
+  }
+}
+
+window.addEventListener('appinstalled', function(){
+  showToast('RED SEA App installed! 🔴','green');
+  document.getElementById('pwa-banner').style.display='none';
+});
+
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.borderColor = type==='green'?'rgba(6,214,160,0.4)':type==='red'?'rgba(230,57,70,0.4)':type==='cyan'?'rgba(0,212,232,0.4)':'var(--border)';
+  t.style.color = type==='green'?'var(--green)':type==='red'?'var(--accent2)':type==='cyan'?'var(--cyan)':'var(--text)';
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t=setTimeout(()=>t.classList.remove('show'),2500);
+}
+</script>
+</body>
+</html>
