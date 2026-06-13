@@ -967,10 +967,15 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
       </select>
       <div id="cu-role-note" style="font-size:11px;margin-top:6px;padding:6px 10px;border-radius:6px;background:rgba(0,212,232,0.08);color:var(--text2)"></div>
     </div>
-    <div class="form-group mb12" id="minute-limit-group">
-      <div class="form-label">Minute Limit (for Admin)</div>
+    <div class="form-group mb12" id="minute-limit-group" style="display:none">
+      <div class="form-label" style="color:var(--gold)">⏱ Minute Limit for this Admin</div>
       <input class="form-control" type="number" id="cu-minutes" placeholder="e.g. 70000" min="1000" max="500000"/>
-      <div style="font-size:11px;color:var(--text3);margin-top:4px">How many minutes this admin can use (70,000 – 150,000)</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:4px">Range: 70,000 – 150,000 minutes</div>
+      <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+        <button type="button" onclick="document.getElementById('cu-minutes').value=70000" style="background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px">70k</button>
+        <button type="button" onclick="document.getElementById('cu-minutes').value=100000" style="background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px">100k</button>
+        <button type="button" onclick="document.getElementById('cu-minutes').value=150000" style="background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px">150k</button>
+      </div>
     </div>
     <div class="toggle-wrap mb12">
       <div class="toggle on" id="cu-toggle" onclick="toggleEl(this)"><div class="toggle-thumb"></div></div>
@@ -1042,6 +1047,7 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 <script>
 // ═══ API CONFIG — change IP if opening on phone ═══
 const API_BASE = 'https://impaired-reshuffle-facedown.ngrok-free.app/api';
+// App works fully offline - server is bonus for real-time sync only
 
 async function api(method, path, body) {
   try {
@@ -1176,7 +1182,9 @@ function checkRemembered(){
 }
 // Master credentials — NEVER overwritten by localStorage
 const MASTER_ACCOUNTS = [
-  {name:'Ridwan', password:'RedSea2024', role:'master'}
+  {name:'Ridwan',  password:'RedSea2024', role:'master'},
+  {name:'ridwan',  password:'RedSea2024', role:'master'},
+  {name:'RIDWAN',  password:'RedSea2024', role:'master'},
 ];
 
 async function doLogin() {
@@ -1593,16 +1601,22 @@ async function doEndCall(){
 function openCreateUser(){
   const sel = document.getElementById('cu-role');
   const note = document.getElementById('cu-role-note');
+  const minGroup = document.getElementById('minute-limit-group');
   if(currentRole === 'master'){
     sel.innerHTML = '<option value="user">👤 User — submit calls only</option><option value="admin">🛡 Admin — manage users & dashboard</option>';
     note.innerHTML = '👑 <b>Master:</b> You can create both User and Admin accounts';
-  } else if(currentRole === 'admin'){
+  } else {
     sel.innerHTML = '<option value="user">👤 User — submit calls only</option>';
     note.innerHTML = '🛡 <b>Admin:</b> You can only create User accounts';
   }
-  // Clear fields
+  // Show minute limit only when admin role selected
+  sel.onchange = function(){
+    if(minGroup) minGroup.style.display = this.value==='admin' ? 'block' : 'none';
+  };
+  if(minGroup) minGroup.style.display='none';
   document.getElementById('cu-username').value='';
   document.getElementById('cu-password').value='';
+  document.getElementById('cu-minutes') && (document.getElementById('cu-minutes').value='');
   openModal('modal-create-user');
 }
 async function createUser(){
@@ -1617,10 +1631,13 @@ async function createUser(){
   if(role==='admin'&&currentRole!=='master'){
     showToast('Only Master can create Admin accounts','red');return;
   }
+  const minInput = document.getElementById('cu-minutes');
+  const minuteLimit = (role==='admin' && minInput && minInput.value) ? parseInt(minInput.value) : (role==='admin' ? 70000 : 0);
   const newU = {id:'u'+Date.now(),name,role,enabled:true,
     today:0,yesterday:0,month:0,lastMonth:0,
     password:pass,
-    minuteLimit: role==='admin' ? 70000 : 0
+    minuteLimit: minuteLimit,
+    minutesUsed: 0
   };
   users.push(newU);
   saveUsersLocal();
